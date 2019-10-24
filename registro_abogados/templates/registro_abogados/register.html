@@ -1,0 +1,190 @@
+{% if latest_abogado_list %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro Abogados Confival</title>
+    </head>
+    <body>
+    <header>
+        <div class="encabezado">
+            <h2>
+                Actualizaci&oacute;n Abogados
+            </h2>
+        </div>
+        <div class="fecha">
+            <p>
+                <h2>
+                    <script>
+                        var f = new Date();
+                        document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+                    </script>
+                </h2>
+            </p><br>
+        </div>
+    </header>
+
+    <nav>
+        <form action="" method="post">
+            <div class="form-group-row">
+                <div class="col-xs-11">
+                    <div class="input-group">
+                        <input class="form-control" id="ex1" type="search" placeholder="B&uacute;squeda r&aacute;pida">
+                        <span class="input-group-btn">
+                            <button class="btn botonbusqueda" type="button">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+
+                        <span class="input-group-btn">
+                        <div class="botones">
+                            <button class="btn boton" type="button">Nuevo
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </button>
+
+                            <button class="btn boton" type="button">Guardar
+                                <i class="glyphicon glyphicon-floppy-disk"></i>
+                            </button>
+                    
+                            <button class="btn boton" type="button">Ver CC
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+
+                            <button class="btn boton" type="button">Ver TP
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                    
+                            <button class="btn boton" type="button">Salir
+                                <i class="glyphicon glyphicon-log-out"></i>
+                            </button>
+                        </div>
+                        </span>
+                    
+                </div>
+            </div>
+        </form>
+    </nav>
+
+    <main>
+        <section class="s1">
+            <div class="contenido">
+                <h5>
+                    <b>C&oacute;digo</b>
+                </h5>
+            </div>         
+
+            <div class="contenido">
+                <h5>
+                    <b>Nombres</b>
+                    <input type="text">
+                </h5>
+            </div>
+            
+
+            <div class="contenido">
+                <h5>
+                    <b>Apellidos</b>
+                    <input type="text">
+                </h5>
+            </div>
+            
+
+            <div class="contenido">
+                <h5>
+                    <b>Fecha de Nacimiento</b>
+                    <input type="date">
+                </h5>
+            </div>
+
+
+            <div class="contenido">
+                <h5>
+                    <b>Genero</b>
+                    <form>
+                        <input type="radio" name="gender" value="F" checked> F
+                        <input type="radio" name="gender" value="M"> M
+                        <input type="radio" name="gender" value="No"> No
+                    </form>
+                </h5>
+            </div>
+
+
+            <div class="contenido">
+                <h5>
+                    <b>Cedula</b>
+                    <input type="text">
+                </h5>
+            </div>
+
+
+            <div class="contenido">
+                <h5>
+                    <b>Fecha de Expedicion</b>
+                    <input type="date">
+                </h5>
+            </div>
+            
+
+            <div class="contenido">
+                <h5>
+                    <b>Ciudad de Expedicion</b>
+                    <input type="text">
+                </h5>
+            </div>
+
+            <div class="contenido">
+                <h5>
+                    <b>Targeta Profesional</b>
+                    <input type="text">
+                </h5>
+            </div>
+
+            <div class="contenido">
+                <h5>
+                    <b>Perfil</b>
+                    <form>
+                        <select name="cars">
+                            <option value="cliente">cliente</option>
+                            <!-- <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option> -->
+                        </select>
+                        <br><br>                        
+                    </form>
+                </h5>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <div class="footitle">
+            <h5>
+                <b>Elaborado por:jjmuesesq@unal.edu.co</b>
+            </h5>
+        </div>
+        <div class="footcont">
+            <h5>
+                {{campo}}
+            </h5>
+        </div>
+
+        <div class="footitle">
+            <h5>
+                <b>Revisado por:confival@areaTecnologia.com</b>
+            </h5>
+        </div>
+        <div class="footcont">
+            <h5>
+                {{campo}}
+            </h5>
+        </div>
+    </footer>
+
+    </body>
+    </html>
+{% else %}
+    <p>No hay abogados disponibles</p>
+{% endif %}
