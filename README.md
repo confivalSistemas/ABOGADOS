@@ -1,14 +1,27 @@
+# Configuración Proyecto Django-Python para registro de abogados en CONFIVAL
+
+Es un aplicativo en desarrollo para migración de aplicativos de areas comercial, juridica entre otras que estan
+implementadas en la actualidad en php y bases de datos Mysql. El objetivo es cambiar lenguaje de programación a Python 
+para mayor escalabilidad y analisis de datos con los procesos de la empresa. 
+
+## Instalacion
+A continuacion se presentan los requerimientos para configuracion de ambiente de trabajo 
+
+
+1. Desinstalar versiones de python desactualizadas
+2. Instalar [python](https://www.python.org/downloads/windows/) 64 ultima version 3.7
+```bash
+Download Windows x86-64 executable installer
+```
+3. instalar django CMD o linea de comandos en Windows
+```bash
+pip install Django==2.2.6
+```
+4. instalar https://visualstudio.microsoft.com/es/downloads/?rr=https%3A%2F%2Fwww.google.com%2F ARM64 o 64x segun procesador.
+Esto con el objetivo de solucionar error de dependencias 
+```bash
 cd error: Microsoft Visual C++ 14.0 is required. Get it with "Microsoft Visual C++ Build Tools": http://landinghub.
-
-////////////////
-=======================================================================================================================================
-CONFIGURACION PROYECTO DJANGO EN WINDOWS
-=======================================================================================================================================
-
-1. desinstalar python
-2. instalar python 64 ultima version 3.7
-3. instalar django CMD pip install Django
-4. intalar https://visualstudio.microsoft.com/es/downloads/?rr=https%3A%2F%2Fwww.google.com%2F ARM64 o 64x segun procesador
+```
 5. crear proyecto python startproject "nombre"
 6. instalar pip install mysqlclient en consola
 7. crear app django-admin manage.py startapp "nombre app"
@@ -27,7 +40,7 @@ DATABASES = {
 
 conexion.cnf
 [client]
-database = NAME
+database = NAME (nombre de la base de datos)
 user = USER
 password = PASSWORD
 default-character-set = utf8
@@ -67,7 +80,7 @@ con el siguiente comando
 	
 
 ===========================================================================================================================================
-PARA LA CREACION DE VISTAS DE ADMINISTRADOR EN DJANGOpython
+PARA LA CREACION DE VISTAS DE ADMINISTRADOR EN DJANGO
 ===========================================================================================================================================
 
 18. Ejecutar usuario de app con comando python manage.py createsuperuser
