@@ -4,7 +4,7 @@ Es un aplicativo en desarrollo para migración de aplicativos de areas comercial
 implementadas en la actualidad en php y bases de datos Mysql. El objetivo es cambiar lenguaje de programación a Python 
 para mayor escalabilidad y analisis de datos con los procesos de la empresa. 
 
-## Instalacion
+## Instalación
 A continuacion se presentan los requerimientos para configuracion de ambiente de trabajo 
 
 
@@ -16,34 +16,77 @@ Download Windows x86-64 executable installer
 3. instalar django CMD o linea de comandos en Windows
 ```bash
 pip install Django==2.2.6
+python -m django --version
 ```
 4. instalar https://visualstudio.microsoft.com/es/downloads/?rr=https%3A%2F%2Fwww.google.com%2F ARM64 o 64x segun procesador.
 Esto con el objetivo de solucionar error de dependencias 
 ```bash
 cd error: Microsoft Visual C++ 14.0 is required. Get it with "Microsoft Visual C++ Build Tools": http://landinghub.
 ```
-5. crear proyecto python startproject "nombre"
-6. instalar pip install mysqlclient en consola
-7. crear app django-admin manage.py startapp "nombre app"
-8. configurar setting.py
-    "# settings.py
+5. Crear proyecto python startproject "nombre_del_proyecto"
+```bash
+django-admin startproject abogados
+```
+cambiar nombre del directorio raiz
+
+```bash
+ABOGADOS/
+    manage.py
+    abogados/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+```
+correr el servidor de desarrollo
+```bash
+python manage.py runserver
+
+ctrl + c  
+```
+6. Instalar libreria de conexión a base de datos en Mysql en terminal 
+```bash
+pip install mysqlclient
+```
+7. Crear applicativo registro_abogados dentro del directorio raiz del proyecto ABOGADOS
+```bash
+django-admin manage.py startapp registro_abogados
+```
+```bash
+registro_abogados/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py
+```
+8. Configurar abogados/setting.py para conexion a base de datos existente Mysql en variable DATABASES
+
+```bash
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': '/path/to/my.cnf',
+            'read_default_file': '/path/to/my.cnf',#asignar ruta de archivo conexion.cnf
         },
     }
 }
-"
-9. crear archivo en el carpeta del app tipo .cnf segun modelo conexion:
+```
 
-conexion.cnf
+9. crear archivo 'conexion.cnf' en directorio del aplicativo  registro_abogados => registro_abogados/conexion.cnf
+
+```bash
 [client]
-database = NAME (nombre de la base de datos)
-user = USER
-password = PASSWORD
+database = NAME #(nombre de la base de datos)
+user = USER #(usuario)
+password = PASSWORD #(contraseña)
 default-character-set = utf8
+```
+
+
 =========================================================================================================================================
 PARA LA CONFIGURACION DE BASE DE DATOS Y CONEXION A DJANGO IMPORTANDO CONTENIDO DE TABLAS 
 =========================================================================================================================================
