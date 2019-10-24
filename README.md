@@ -25,7 +25,7 @@ DATABASES = {
 "
 9. crear archivo en el carpeta del app tipo .cnf segun modelo conexion:
 
-# my.cnf
+conexion.cnf
 [client]
 database = NAME
 user = USER
