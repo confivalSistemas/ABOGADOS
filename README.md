@@ -65,7 +65,7 @@ registro_abogados/
 ```
 8. Configurar abogados/setting.py para conexion a base de datos existente Mysql en variable DATABASES
 
-```bash
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -112,7 +112,7 @@ python manage.py inspectdb > registro_abogados/models.py
 ```
 
 14. activar modelos en setting.py incluir la app: registro_abogados con el nombre de la clase creada en apps.py
-```bash
+```python
 INSTALLED_APPS = [
     'registro_abogados.apps.RegistroAbogadosConfig',
     'django.contrib.admin',
