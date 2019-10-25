@@ -160,9 +160,6 @@ python manage.py runserver
 ```
 
 21. Configurar archivo admin.py de app registro_abogados para reconocimiento de modelos desde administrador
-
-## Usage
-
 ```python
 
 from django.contrib import admin
