@@ -50,7 +50,7 @@ pip install mysqlclient
 ```
 7. Crear applicativo registro_abogados dentro del directorio raiz del proyecto ABOGADOS
 ```bash
-django-admin manage.py startapp registro_abogados
+python manage.py startapp registro_abogados
 ```
 ```bash
 registro_abogados/
