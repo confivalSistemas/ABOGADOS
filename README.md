@@ -87,57 +87,86 @@ default-character-set = utf8
 ```
 
 
-=========================================================================================================================================
-PARA LA CONFIGURACION DE BASE DE DATOS Y CONEXION A DJANGO IMPORTANDO CONTENIDO DE TABLAS 
-=========================================================================================================================================
+## Para la configuración de bases de datos existente y conexión a Django importando contenido de tablas 
 
 10. Eliminar sistema de seguridad que esta contenido en script.msql como son
-	*.auth
+```bash
+*.auth
 	*.django
 	*.sc_
+```
+	
 11. Se guarda el archivo de la base de datos limpia con un nombre "confival.msql" para ser utilizada en 
 app registro_abogados django
 
-12. Aplicar comando de migración
-	python manage.py migrate
+12. Aplicar comando de migración para detectar base de datos y creacion de tablas de seguridad
+```bash
+python manage.py migrate
+```
 
 13. Traer las tablas en db confival al modelo de nuestra aplicacion models.py de registro_abogados
 con el siguiente comando
-	python manage.py inspectdb > registro_abogados/models.py
 
-14. activar modelos 
-   a- setting.py incluir la app:
-	segun modelo:
-	'db_abogados.DbAbogadosConfig'
+```bash
+python manage.py inspectdb > registro_abogados/models.py
+```
+
+14. activar modelos en setting.py incluir la app: registro_abogados con el nombre de la clase creada en apps.py
+```bash
+INSTALLED_APPS = [
+    'registro_abogados.apps.RegistroAbogadosConfig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
+```
 
 15. Ajustar tipo de archivo generado para models.py por inspectdb utf16 -> utf8
 
 16. Aplicar comando de migración
-	python manage.py migrate
-
+```bash
+python manage.py migrate
+```
 17. Aplicar comando de migracion a la app
-	python manage.py makemigrations registro_abogados
+```bash
+python manage.py makemigrations registro_abogados
+```
 
-18. Aplicar comando de migracion al archivo del directorio migrate
-	python manage.py sqlmigrate registro_abogados 000x  => x es el numero de la migración creada
-	
+18. Aplicar comando de migración al archivo del directorio migrations para que Django reconsca todos los modelos 
+como tablas y campos respectivos para su utilización
 
-===========================================================================================================================================
-PARA LA CREACION DE VISTAS DE ADMINISTRADOR EN DJANGO
-===========================================================================================================================================
+```bash
+python manage.py sqlmigrate registro_abogados 000x  # x es el numero de la migración creada
+```	
 
-18. Ejecutar usuario de app con comando python manage.py createsuperuser
-	*Username: confival
-	*Email:prueba@prueba.com
-	*Password:12345
+## Para la creación de vista administrador en Django
 
-19. Ejecutar servidor para ingresar a la vista de administrador
-	*python manage.py runserver
+19. Ejecutar usuario de app con comando python 
+```bash
+manage.py createsuperuser
+```
+```bash
+*Username: confival
+*Email:prueba@prueba.com
+*Password:12345
+```
 
-20. Configurar archivo admin.py de app registro:usuario para reconocimiento de modelos desde administrador+
+20. Ejecutar servidor para ingresar a la vista de administrador http://localhost:8000/admin/
+```bash
+python manage.py runserver
+```
 
-	from django.contrib import admin
+21. Configurar archivo admin.py de app registro_abogados para reconocimiento de modelos desde administrador
 
-	from .models import DbAbogados
+## Usage
 
-	admin.site.register(DbAbogados)
+```python
+
+from django.contrib import admin
+from .models import DbAbogados
+
+admin.site.register(DbAbogados)
+```
