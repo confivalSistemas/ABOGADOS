@@ -91,9 +91,9 @@ default-character-set = utf8
 
 10. Eliminar sistema de seguridad que esta contenido en script.msql como son
 ```bash
-*.auth
-	*.django
-	*.sc_
+.auth
+.django
+.sc_
 ```
 	
 11. Se guarda el archivo de la base de datos limpia con un nombre "confival.msql" para ser utilizada en 
@@ -149,9 +149,9 @@ python manage.py sqlmigrate registro_abogados 000x  # x es el numero de la migra
 manage.py createsuperuser
 ```
 ```bash
-*Username: confival
-*Email:prueba@prueba.com
-*Password:12345
+Username: confival
+Email:prueba@prueba.com
+Password:12345
 ```
 
 20. Ejecutar servidor para ingresar a la vista de administrador http://localhost:8000/admin/
