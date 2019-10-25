@@ -146,7 +146,7 @@ python manage.py sqlmigrate registro_abogados 000x  # x es el numero de la migra
 
 19. Ejecutar usuario de app con comando python 
 ```bash
-manage.py createsuperuser
+python manage.py createsuperuser
 ```
 ```bash
 Username: confival
