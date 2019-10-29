@@ -11,7 +11,7 @@ def index(request):
 
 def registro(request):
     latest_abogado_list = DbAbogados.objects.order_by('codigo')
-    template = loader.get_template('registro_abogados/register.html')
+    template = loader.get_template('registro_abogados/prueba_register.html')
     context = {
         'latest_abogado_list': latest_abogado_list,
     }

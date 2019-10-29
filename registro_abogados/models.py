@@ -561,6 +561,8 @@ class DbAbogados(models.Model):
     class Meta:
         managed = False
         db_table = 'db_abogados'
+    def __str__(self):
+        return self.nombres
 
 
 class Desembolso(models.Model):
