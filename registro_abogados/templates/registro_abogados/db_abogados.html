@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Formulario db_abogados</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registro_abogados/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registro_abogados/css/estilodb.css' %}">
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'registro_abogados/js/db_abogados.js' %}"></script>
+<!--===============================================================================================-->
+</head>
+<body>
+	<header>
+		<div>
+			<h2>
+				db_abogados
+			<h2>
+		</div>
+
+		<div>
+			<p>
+				<h2>
+					<script>
+						var f = new Date();
+						document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+					</script>
+				</h2>
+			</p><br>
+		</div>
+	</header>
+
+	<nav>
+		<form action="" method="post">
+			<div class="form-group-row">
+				<div class="col-xs-12">
+					<div class="input-group">
+						<input class="form-control" id="ex1" type="search" placeholder="B&uacute;squeda r&aacute;pida">
+						<span class="input-group-btn">
+							<button class="btn botonbusqueda" type="button">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</span>
+
+						<span class="input-group-btn">
+						<div class="botones">
+							<button class="btn boton" type="button">Nuevo
+								<i class="glyphicon glyphicon-plus"></i>
+							</button>
+
+							<button class="btn boton" type="button">Guardar
+								<i class="glyphicon glyphicon-floppy-disk"></i>
+							</button>
+					
+							<button class="btn boton" type="button">Ver CC
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+					
+							<button class="btn boton" type="button">Ver TP
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+
+							<button class="btn boton" type="button">Salir
+								<i class="glyphicon glyphicon-log-out"></i>
+							</button>
+					</div>
+						</span>
+				</div>
+			</div>
+		</form>
+	</nav>
+
+	<main>
+		<div class="contenedor">
+
+<!--  Pestaña de datos------------------------------------------------------------------------------------------------------------------------------------------->
+
+			<div class="cabecera">
+				<button onclick="mostrarPestana(0);"><h4>Datos</h4></button>
+			</div>
+				<div class="pestana ">
+					<div class="cabecera1 cabecera-activa">
+						<section id="Datos" class="secciones">
+							<div class="tituloContenido">
+								<h4>
+									C&oacute;digo
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Nombres
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Apellidos
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Fecha Nacimiento
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="date" name="" class="fechas">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									G&eacute;nero
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="radio" name="F">&nbsp;F&nbsp;
+								<input type="radio" name="M">&nbsp;M&nbsp;
+								<input type="radio" name="No">&nbsp;No
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									C&eacute;dula
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Fecha Expedici&oacute;n
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="date" name="" class="fechas">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Ciudad Expedici&oacute;n
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Tarjeta Profesional
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Perfil
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+						</section>
+					</div>
+				</div>
+<!--  Pestaña de Contacto---------------------------------------------------------------------------------------------------------------------------------------->
+				<div class="cabecera ">
+					<button onclick="mostrarPestana(1);"><h4>Contacto</h4></button>
+				</div>
+					<div class="pestana ">
+						<div class="cabecera1 ">
+							<section id="Contacto" class="secciones">
+							
+
+								<div class="tituloContenido">
+									<h4>
+										Celular
+									</h4>
+								</div>
+								<div class="contenido">
+									<input type="text" name="" class="texto">
+								</div>
+
+								<div class="tituloContenido">
+									<h4>
+										Celular 1
+									</h4>
+								</div>
+								<div class="contenido">
+									<input type="text" name="" class="texto">
+								</div>
+
+								<div class="tituloContenido">
+									<h4>
+										Celular 2
+									</h4>
+								</div>
+								<div class="contenido">
+									<input type="text" name="" class="texto">
+								</div>
+
+								<div class="tituloContenido">
+									<h4>
+										Fijo
+									</h4>
+								</div>
+								<div class="contenido">
+									<input type="text" name="" class="texto">
+								</div>
+
+								<div class="tituloContenido">
+									<h4>
+										Fijo 1
+									</h4>
+								</div>
+								<div class="contenido">
+									<input type="text" name="" class="texto">
+								</div>
+
+								<div class="tituloContenido">
+									<h4>
+										Fijo 2
+									</h4>
+								</div>
+								<div class="contenido">
+									<input type="text" name="" class="texto">
+								</div>
+
+								<div class="tituloContenido">
+									<h4>
+										Fax
+									</h4>
+								</div>
+								<div class="contenido">
+									<input type="text" name="" class="texto">
+								</div>
+
+								<div class="tituloContenido">
+									<h4>
+										E Mail 1
+									</h4>
+								</div>
+								<div class="contenido">
+									<input type="text" name="" class="texto">
+								</div>
+
+								<div class="tituloContenido">
+									<h4>
+										E Mail 2
+									</h4>
+								</div>
+								<div class="contenido">
+									<input type="text" name="" class="texto">
+								</div>
+							</section>
+						</div>
+					</div>
+
+<!--  pestaña localizacion--------------------------------------------------------------------------------------------------------------------------------------->
+
+			<div class="cabecera ">
+				<button onclick="mostrarPestana(2);"><h4>Localización</h4></button>
+			</div>
+				<div class="pestana ">
+					<div class="cabecera1 ">
+						<section id="Localizacion" class="secciones">
+							
+
+							<div class="tituloContenido">
+								<h4>
+									Dirección
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Ciudad
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Dirección 2
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+
+							<div class="tituloContenido">
+								<h4>
+									Ciudad 2
+								</h4>
+							</div>
+							<div class="contenido">
+								<input type="text" name="" class="texto">
+							</div>
+					
+						</section>
+					</div>
+				</div>
+
+<!--  pestaña Información adicional------------------------------------------------------------------------------------------------------------------------------>
+
+			<div class="cabecera">
+				<button onclick="mostrarPestana(3);"><h4>Información adicional</h4></button>
+			</div>
+			<div class="pestana ">
+				<div class="cabecera1 ">
+					<section id="Informacion" class="secciones">
+
+						<div class="tituloContenido">
+							<h4>
+								Empresa
+							</h4>
+						</div>
+						<div class="contenido">
+							<input type="text" name="" class="texto">
+						</div>
+
+						<div class="tituloContenido">
+							<h4>
+								Fecha Actualización
+							</h4>
+						</div>
+						<div class="contenido">
+							<input type="date" name="" class="fechas">
+						</div>
+
+						<div class="tituloContenido">
+							<h4>
+								Nombre Asesor
+							</h4>
+						</div>
+						<div class="contenido">
+							<input type="text" name="" class="texto">
+						</div>
+
+						<div class="tituloContenido">
+							<h4>
+								Observación
+							</h4>
+						</div>
+						<div class="contenido">
+							<input type="text" name="" class="texto">
+						</div>
+
+						<div class="tituloContenido">
+							<h4>
+								Actividad
+							</h4>
+						</div>
+						<div class="contenido">
+							<input type="text" name="" class="texto">
+						</div>
+
+						<div class="tituloContenido">
+							<h4>
+								Contacto
+							</h4>
+						</div>
+						<div class="contenido">
+							<input type="text" name="" class="texto">
+						</div>
+					</section>
+				</div>
+			</div>
+
+<!--  Pestaña de documentos-------------------------------------------------------------------------------------------------------------------------------------->
+
+			<div class="cabecera">
+				<button onclick="mostrarPestana(4);"><h4>Documentos</h4></button>
+			</div>
+			<div class="pestana ">
+				<div class="cabecera1 ">
+					<section id="cc" class="secciones2">
+						<div class="tituloContenidod">
+							<h4>
+								Copia cédula de ciudadanía
+							</h4>
+						</div>
+						<div class="contenidod">
+							<button class="btn boton" type="button">Seleccionar Archivo
+								<i class="glyphicon glyphicon-plus"></i>
+							</button>
+
+							<button class="btn boton" type="button">Ver Archivo
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</section>
+				
+					<section id="tp" class="secciones3">
+						<div class="tituloContenidod2">
+							<h4>
+								Copia tarjeta profesional
+							</h4>
+						</div>
+						<div class="contenidod">
+							<button class="btn boton" type="button">Seleccionar Archivo
+								<i class="glyphicon glyphicon-plus"></i>
+							</button>
+
+							<button class="btn boton" type="button">Ver Archivo
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+	</main>
+
+	<footer>
+	</footer>
+
+</body>
+
+</html>

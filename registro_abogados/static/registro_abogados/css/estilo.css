@@ -1,0 +1,244 @@
+/*Estilos generales  */
+
+body {
+    padding: 5% 8% 5% 16%;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    /* font-size: 0.5rem; */
+}
+
+h3 {
+    text-align: left;
+    font-weight: bold;
+}
+
+h4 {
+    text-align: left;
+}
+
+h5 {
+    text-align: left;
+    font-weight: bold;
+}
+
+h6 {
+    text-align: left;
+    font-size: 1.4rem;
+}
+
+p {
+    text-align: left;
+}
+
+
+/*estilos header*/
+
+header {
+    background: #8f8f8fd2;
+    padding: 0rem 1rem 0rem 4rem;
+    margin-bottom: 0.2rem;
+    width: 90%;
+    height: 7rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.encabezado {
+    color: #2F74D0;
+    border-radius: 1rem;
+    height: 5rem;
+    width: 60%;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.encabezado>h2 {
+    margin-top: 1rem;
+    font-size: 2.9rem;
+}
+
+.fecha {
+    color: #2F74D0;
+    border-radius: 1rem;
+    height: 5rem;
+    width: 25%;
+    text-align: center;
+}
+
+.fecha>h2 {
+    margin-top: 1rem;
+    font-size: 2.9rem;
+}
+
+
+/*estilo barra de navegacion*/
+
+nav {
+    background: #8f8f8fd2;
+    width: 90%;
+    margin-bottom: 0.2rem;
+    padding: 0.5rem 4rem 0.5rem 4rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.col-xs-11 {
+    padding-left: 0rem;
+}
+
+.form-control {
+    width: 30%;
+    border: #84a5e8 0.1rem solid;
+}
+
+.btn {
+    margin-right: 1rem;
+}
+
+.botonbusqueda {
+    background-color: #84a5e8;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.botonbusqueda:hover {
+    background-color: #EEEEEE;
+    color: black;
+    border: #84a5e8 0.1rem solid;
+    border-radius: 0.5rem;
+}
+
+.botones {
+    width: 30%;
+    text-align: right;
+    padding-left: 7rem;
+}
+
+.boton {
+    background-color: #84a5e8;
+    color: #fff;
+    width: 10rem;
+}
+
+.boton:hover {
+    background-color: #EEEEEE;
+    color: black;
+    border: #84a5e8 0.2rem solid;
+    border-radius: 0.5rem;
+}
+
+
+/*estilo main*/
+
+main {
+    background: #8f8f8fd2;
+    width: 90%;
+    padding: 0.5rem 4rem 0.5rem 4rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.1rem;
+}
+
+.s1 {
+    text-align: right;
+    background: white;
+    border-radius: 1rem;
+    width: 100%;
+    margin: 0.5rem 0rem 1rem 0rem;
+    border: #84a5e8 0.2rem solid;
+}
+
+.s2 {
+    text-align: right;
+    background: white;
+    border-radius: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border: #84a5e8 0.2rem solid;
+}
+
+.encabezadoT {
+    background: #84a5e8;
+    color: black;
+    height: 4rem;
+    border-radius: 1rem 1rem 0rem 0rem;
+    padding-top: 0.2rem;
+    padding-left: 1rem;
+    text-transform: uppercase;
+    border: white 0.1rem solid;
+}
+
+.contenido {
+    padding: 0rem 0rem 0rem 1rem;
+    margin-top: 1.5rem;
+}
+
+.botonArchivo {
+    text-align: right;
+    background: #84a5e8;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+.botonArchivo:hover {
+    background: rgb(206, 206, 206);
+    color: black;
+    border-radius: 0.5rem;
+    border: #84a5e8 0.1rem solid;
+}
+
+
+/*estilo en footer*/
+
+footer {
+    width: 90%;
+    background: #8f8f8fd2;
+    color: white;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 4rem 0.5rem 4rem;
+    height: 4rem;
+    margin-bottom: 0.2rem;
+    text-align: left;
+}
+
+.footitle {
+    border-radius: 1rem;
+    padding: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.footcont {
+    background: white;
+    color: black;
+    border-radius: 1rem;
+    border: #84a5e8 0.2rem solid;
+    padding: 0rem 3rem 0rem 2rem;
+    width: 35%;
+    height: 3rem;
+}
+
+.footcont>h5 {
+    text-align: left;
+    margin-top: 0.7rem;
+}
