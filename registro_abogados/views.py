@@ -3,13 +3,20 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.template import loader
+from django import forms
+
+#========================================================================================================================================
+#==> configuraciones para validacion
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
+import datetime #for checking renewal date range.
 
 #aca se tienen que llamar a los modelos
 from .models import DbAbogados
 
 # Create your views here.
 
-#=======================================================================================================================================
+#========================================================================================================================================
 #==> Aqui se hace la primera configuracion de vistas
 
 # def index(request):
@@ -32,3 +39,16 @@ class RegistroView(generic.ListView):
 
     def get_queryset(self):
         return DbAbogados.objects.order_by('codigo')
+
+class FormularioView(generic.ListView):
+    template_name = 'registro_abogados/formularios.html'
+    context_object_name = 'latest_abogado_list'
+
+    def get_queryset(self):
+        return DbAbogados.objects.order_by('codigo')
+
+class RenewBookForm(forms.Form):
+    renewal_date = forms.DateField(help_text="Enter a date between now and 4 weeks (default 3).")
+
+    
+
