@@ -537,7 +537,7 @@ class DbAbogados(models.Model):
     departamento = models.CharField(max_length=18, blank=True, null=True)
     direccion2 = models.CharField(max_length=154, blank=True, null=True)
     ciudad2 = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudad2', blank=True, null=True, related_name='ciudad2')
-    perfil = models.ForeignKey('Perfil', models.DO_NOTHING, db_column='perfil', blank=True, null=True, related_name='perfil')
+    perfil = models.ForeignKey('Perfil', models.DO_NOTHING, db_column='perfil', blank=True, null=True)
     empresa = models.CharField(max_length=56, blank=True, null=True)
     celular2 = models.CharField(max_length=15, blank=True, null=True)
     celular1 = models.CharField(max_length=15, blank=True, null=True)
@@ -556,7 +556,7 @@ class DbAbogados(models.Model):
     copiatp = models.CharField(db_column='copiaTp', max_length=150, blank=True, null=True)  # Field name made lowercase.
     fechaexpedicion = models.DateField(db_column='fechaExpedicion', blank=True, null=True)  # Field name made lowercase.
     ciudadexpedicion = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudadExpedicion', blank=True, null=True, related_name='ciudadexpedicion')  # Field name made lowercase.
-    genero = models.ForeignKey('Genero', models.DO_NOTHING, blank=True, null=True, related_name='genero')
+    genero = models.ForeignKey('Genero', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
