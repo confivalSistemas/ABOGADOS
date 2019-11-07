@@ -532,12 +532,12 @@ class DbAbogados(models.Model):
     tarjeta_p = models.IntegerField(blank=True, null=True)
     fecha_nacimiento = models.DateField(blank=True, null=True)
     direccion = models.CharField(max_length=154, blank=True, null=True)
-    ciudad = models.IntegerField(blank=True, null=True)
+    ciudad = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudad', blank=True, null=True, related_name='ciudad')
     ciudadnombre = models.CharField(db_column='ciudadNombre', max_length=27, blank=True, null=True)  # Field name made lowercase.
     departamento = models.CharField(max_length=18, blank=True, null=True)
     direccion2 = models.CharField(max_length=154, blank=True, null=True)
-    ciudad2 = models.IntegerField(blank=True, null=True)
-    perfil = models.IntegerField(blank=True, null=True)
+    ciudad2 = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudad2', blank=True, null=True, related_name='ciudad2')
+    perfil = models.ForeignKey('Perfil', models.DO_NOTHING, db_column='perfil', blank=True, null=True, related_name='perfil')
     empresa = models.CharField(max_length=56, blank=True, null=True)
     celular2 = models.CharField(max_length=15, blank=True, null=True)
     celular1 = models.CharField(max_length=15, blank=True, null=True)
@@ -555,14 +555,12 @@ class DbAbogados(models.Model):
     copiacc = models.CharField(db_column='copiaCc', max_length=150, blank=True, null=True)  # Field name made lowercase.
     copiatp = models.CharField(db_column='copiaTp', max_length=150, blank=True, null=True)  # Field name made lowercase.
     fechaexpedicion = models.DateField(db_column='fechaExpedicion', blank=True, null=True)  # Field name made lowercase.
-    ciudadexpedicion = models.IntegerField(db_column='ciudadExpedicion', blank=True, null=True)  # Field name made lowercase.
-    genero = models.IntegerField()
+    ciudadexpedicion = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudadExpedicion', blank=True, null=True, related_name='ciudadexpedicion')  # Field name made lowercase.
+    genero = models.ForeignKey('Genero', models.DO_NOTHING, blank=True, null=True, related_name='genero')
 
     class Meta:
         managed = False
         db_table = 'db_abogados'
-    def __str__(self):
-        return self.nombres
 
 
 class Desembolso(models.Model):
@@ -715,7 +713,7 @@ class Documentoscesion(models.Model):
 
 class Dtf90(models.Model):
     codigo = models.AutoField(primary_key=True)
-    anomes = models.DateField(db_column='anoMes', blank=True, null=True)  # Field name made lowercase.
+    anomes = models.DateField(db_column='a±oMes', blank=True, null=True)  # Field name made lowercase.
     cdt90 = models.DecimalField(max_digits=10, decimal_places=5, blank=True, null=True)
 
     class Meta:
@@ -897,7 +895,7 @@ class Ipc(models.Model):
     ano_mes = models.CharField(max_length=20)
     ipc = models.FloatField()
     var_mensual = models.FloatField()
-    var_anocorrido = models.FloatField(db_column='var_anoCorrido')  # Field name made lowercase.
+    var_anocorrido = models.FloatField(db_column='var_a±oCorrido')  # Field name made lowercase.
     var_anual = models.FloatField()
 
     class Meta:
@@ -1314,6 +1312,19 @@ class Saldos(models.Model):
         db_table = 'saldos'
 
 
+class ScLog(models.Model):
+    id = models.IntegerField()
+    inserted_date = models.DateTimeField(blank=True, null=True)
+    username = models.CharField(max_length=90)
+    application = models.CharField(max_length=200)
+    creator = models.CharField(max_length=30)
+    ip_user = models.CharField(max_length=32)
+    action = models.CharField(max_length=30)
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'sc_log'
 
 
 class Seguimiento(models.Model):
