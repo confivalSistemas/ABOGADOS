@@ -212,6 +212,12 @@ class AsesoresDb(models.Model):
         managed = False
         db_table = 'asesores_db'
 
+    def __str__(self):
+        """
+        String que representa al objeto accesores
+        """
+        return self.nombre + " "+ self.apellido
+
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -550,7 +556,7 @@ class DbAbogados(models.Model):
     e_mail2 = models.CharField(max_length=67, blank=True, null=True)
     contacto = models.IntegerField(blank=True, null=True)
     fecha_actualizacion = models.DateField(blank=True, null=True)
-    actualizacion = models.IntegerField(blank=True, null=True)
+    actualizacion = models.IntegerField(blank=True, null=True)#models.ManyToManyField(AsesoresDb, help_text="Seleccione un accesor")
     observaciones = models.CharField(max_length=150, blank=True, null=True)
     copiacc = models.CharField(db_column='copiaCc', max_length=150, blank=True, null=True)  # Field name made lowercase.
     copiatp = models.CharField(db_column='copiaTp', max_length=150, blank=True, null=True)  # Field name made lowercase.
@@ -561,6 +567,12 @@ class DbAbogados(models.Model):
     class Meta:
         managed = False
         db_table = 'db_abogados'
+    
+    def __str__(self):
+        """
+        String que representa al objeto db_abogados
+        """
+        return self.nombres
 
 
 class Desembolso(models.Model):
@@ -852,11 +864,17 @@ class Genero(models.Model):
     class Meta:
         managed = False
         db_table = 'genero'
+    
+    def __str__(self):
+        """
+        String que representa al objeto genero
+        """
+        return self.genero #+ " "+ self.abreviatura
 
 
 class Iddesembolso(models.Model):
     codigo = models.AutoField(primary_key=True)
-    id = models.CharField(max_length=45)
+    id_desembolso = models.CharField(max_length=45)
 
     class Meta:
         managed = False
@@ -1018,6 +1036,12 @@ class Municipio(models.Model):
         managed = False
         db_table = 'municipio'
 
+    def __str__(self):
+        """
+        String que representa al objeto municipio
+        """
+        return self.municipio
+
 
 class NivelAcademico(models.Model):
     codigo = models.AutoField(primary_key=True)
@@ -1098,6 +1122,14 @@ class Perfil(models.Model):
     class Meta:
         managed = False
         db_table = 'perfil'
+
+    def __str__(self):
+        """
+        String que representa al objeto perfil
+        """
+        return self.perfil  
+    
+     
 
 
 class PerfilApoderado(models.Model):
@@ -1310,21 +1342,6 @@ class Saldos(models.Model):
     class Meta:
         managed = False
         db_table = 'saldos'
-
-
-class ScLog(models.Model):
-    id = models.IntegerField()
-    inserted_date = models.DateTimeField(blank=True, null=True)
-    username = models.CharField(max_length=90)
-    application = models.CharField(max_length=200)
-    creator = models.CharField(max_length=30)
-    ip_user = models.CharField(max_length=32)
-    action = models.CharField(max_length=30)
-    description = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'sc_log'
 
 
 class Seguimiento(models.Model):
