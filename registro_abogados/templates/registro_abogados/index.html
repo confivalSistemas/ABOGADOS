@@ -1,1 +1,13 @@
-<h3>HOLA CONFIVAL</h3>
+{% extends "registro_abogados/base_generic.html" %}
+
+{% block content %}
+<h1>Pagina Home de Registro Abogados Confival</h1>
+    <p>Bienvenido a <em>Confival Abogados</em>, un website desarrollado para el registro de diferentes abogados en el area Juridica de CONFIVAL</p>
+<h2>Dynamic content</h2>
+
+    <p>Confival tiene el siguiente contenido:</p>
+    <ul>
+        <li><strong>Abogados:</strong> {{ num_abogados }}</li>
+        <li><strong>Municipios:</strong> {{ num_municipios }}</li>        
+    </ul>
+{% endblock %}

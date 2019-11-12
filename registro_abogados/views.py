@@ -12,15 +12,27 @@ from django.utils.translation import ugettext_lazy as _
 import datetime #for checking renewal date range.
 
 #aca se tienen que llamar a los modelos
-from .models import DbAbogados
+from .models import DbAbogados, Municipio, Genero
 
 # Create your views here.
 
 #========================================================================================================================================
 #==> Aqui se hace la primera configuracion de vistas
-
-# def index(request):
-#     return HttpResponse("BIENVENIDO AL REGISTRO DE ABOGADOS DE CONFIVAL")
+def index(request):
+    """
+    Funcion vista para la pagina de inicio
+    """
+    # Genera contadores de algunos de los objetos principales
+    num_abogados =DbAbogados.objects.all().count()
+    num_municipios = Municipio.objects.all().count()   
+    
+    # Renderiza la plantilla HTML index.html con los datos en la variable contexto
+    return render(
+        request,
+        'registro_abogados/index.html',
+        context={'num_abogados':num_abogados,'num_municipios':num_municipios},
+    )
+        
 
 # def registro(request):
 #     latest_abogado_list = DbAbogados.objects.order_by('codigo')
@@ -46,9 +58,3 @@ class FormularioView(generic.ListView):
 
     def get_queryset(self):
         return DbAbogados.objects.order_by('codigo')
-
-class RenewBookForm(forms.Form):
-    renewal_date = forms.DateField(help_text="Enter a date between now and 4 weeks (default 3).")
-
-    
-
