@@ -212,12 +212,6 @@ class AsesoresDb(models.Model):
         managed = False
         db_table = 'asesores_db'
 
-    def __str__(self):
-        """
-        String que representa al objeto accesores
-        """
-        return self.nombre + " "+ self.apellido
-
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -530,51 +524,6 @@ class Dano(models.Model):
         db_table = 'dano'
 
 
-class DbAbogados(models.Model):
-    codigo = models.AutoField(primary_key=True)
-    nombres = models.CharField(max_length=51)
-    apellidos = models.CharField(max_length=45, blank=True, null=True)
-    cedula = models.IntegerField(blank=True, null=True)
-    tarjeta_p = models.IntegerField(blank=True, null=True)
-    fecha_nacimiento = models.DateField(blank=True, null=True)
-    direccion = models.CharField(max_length=154, blank=True, null=True)
-    ciudad = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudad', blank=True, null=True, related_name='ciudad')
-    ciudadnombre = models.CharField(db_column='ciudadNombre', max_length=27, blank=True, null=True)  # Field name made lowercase.
-    departamento = models.CharField(max_length=18, blank=True, null=True)
-    direccion2 = models.CharField(max_length=154, blank=True, null=True)
-    ciudad2 = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudad2', blank=True, null=True, related_name='ciudad2')
-    perfil = models.ForeignKey('Perfil', models.DO_NOTHING, db_column='perfil', blank=True, null=True)
-    empresa = models.CharField(max_length=56, blank=True, null=True)
-    celular2 = models.CharField(max_length=15, blank=True, null=True)
-    celular1 = models.CharField(max_length=15, blank=True, null=True)
-    celular = models.CharField(max_length=15, blank=True, null=True)
-    fijo2 = models.CharField(max_length=15, blank=True, null=True)
-    fijo1 = models.CharField(max_length=15, blank=True, null=True)
-    fijo = models.CharField(max_length=15, blank=True, null=True)
-    fax = models.CharField(max_length=15, blank=True, null=True)
-    e_mail1 = models.CharField(max_length=67, blank=True, null=True)
-    e_mail2 = models.CharField(max_length=67, blank=True, null=True)
-    contacto = models.IntegerField(blank=True, null=True)
-    fecha_actualizacion = models.DateField(blank=True, null=True)
-    actualizacion = models.IntegerField(blank=True, null=True)#models.ManyToManyField(AsesoresDb, help_text="Seleccione un accesor")
-    observaciones = models.CharField(max_length=150, blank=True, null=True)
-    copiacc = models.CharField(db_column='copiaCc', max_length=150, blank=True, null=True)  # Field name made lowercase.
-    copiatp = models.CharField(db_column='copiaTp', max_length=150, blank=True, null=True)  # Field name made lowercase.
-    fechaexpedicion = models.DateField(db_column='fechaExpedicion', blank=True, null=True)  # Field name made lowercase.
-    ciudadexpedicion = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudadExpedicion', blank=True, null=True, related_name='ciudadexpedicion')  # Field name made lowercase.
-    genero = models.ForeignKey('Genero', models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'db_abogados'
-    
-    def __str__(self):
-        """
-        String que representa al objeto db_abogados
-        """
-        return self.nombres
-
-
 class Desembolso(models.Model):
     codigo = models.AutoField(primary_key=True)
     codreg = models.IntegerField(db_column='codReg')  # Field name made lowercase.
@@ -725,11 +674,11 @@ class Documentoscesion(models.Model):
 
 class Dtf90(models.Model):
     codigo = models.AutoField(primary_key=True)
-    anomes = models.DateField(db_column='a±oMes', blank=True, null=True)  # Field name made lowercase.
+    anomes = models.DateField(db_column='anoMes', blank=True, null=True)  # Field name made lowercase.
     cdt90 = models.DecimalField(max_digits=10, decimal_places=5, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'dtf90'
 
 
@@ -802,7 +751,7 @@ class Entidadcondenada(models.Model):
     tipo = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'entidadcondenada'
 
 
@@ -864,17 +813,11 @@ class Genero(models.Model):
     class Meta:
         managed = False
         db_table = 'genero'
-    
-    def __str__(self):
-        """
-        String que representa al objeto genero
-        """
-        return self.genero #+ " "+ self.abreviatura
 
 
 class Iddesembolso(models.Model):
     codigo = models.AutoField(primary_key=True)
-    id_desembolso = models.CharField(max_length=45)
+    id = models.CharField(max_length=45)
 
     class Meta:
         managed = False
@@ -913,11 +856,11 @@ class Ipc(models.Model):
     ano_mes = models.CharField(max_length=20)
     ipc = models.FloatField()
     var_mensual = models.FloatField()
-    var_anocorrido = models.FloatField(db_column='var_a±oCorrido')  # Field name made lowercase.
+    var_anocorrido = models.FloatField(db_column='var_anoCorrido')  # Field name made lowercase.
     var_anual = models.FloatField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'ipc'
 
 
@@ -1036,12 +979,6 @@ class Municipio(models.Model):
         managed = False
         db_table = 'municipio'
 
-    def __str__(self):
-        """
-        String que representa al objeto municipio
-        """
-        return self.municipio
-
 
 class NivelAcademico(models.Model):
     codigo = models.AutoField(primary_key=True)
@@ -1123,14 +1060,6 @@ class Perfil(models.Model):
         managed = False
         db_table = 'perfil'
 
-    def __str__(self):
-        """
-        String que representa al objeto perfil
-        """
-        return self.perfil  
-    
-     
-
 
 class PerfilApoderado(models.Model):
     codigo = models.AutoField(primary_key=True)
@@ -1204,6 +1133,15 @@ class RegimenImputacion(models.Model):
     class Meta:
         managed = False
         db_table = 'regimen_imputacion'
+
+
+class RegistroAbogadosPrueba(models.Model):
+    codigo = models.IntegerField(primary_key=True)
+    prueba = models.CharField(max_length=150)
+
+    class Meta:
+        managed = False
+        db_table = 'registro_abogados_prueba'
 
 
 class Relacionapoderado(models.Model):
@@ -1323,7 +1261,7 @@ class Resumenestado(models.Model):
 
 class Salariomin(models.Model):
     codigo = models.AutoField(primary_key=True)
-    ano = models.TextField()  # This field type is a guess.
+    a±o = models.TextField()  # This field type is a guess.
     slm = models.IntegerField()
 
     class Meta:
@@ -1554,9 +1492,3 @@ class Vivienda(models.Model):
     class Meta:
         managed = False
         db_table = 'vivienda'
-
-class Prueba(models.Model):
-    codigo = models.IntegerField(primary_key=True)
-    prueba = models.CharField(max_length=150)
-
-    
