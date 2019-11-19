@@ -34,11 +34,4 @@ class GeneroAdmin(admin.ModelAdmin):
     list_display = ('genero', 'abreviatura', 'codigo')
     list_filter = ('codigo','abreviatura')
 
-#admin.site.register(AsesoresDb)
-#===========================================================================================================
-#=> PERSONALIZANDO ASESORESDB
-# @admin.register(AsesoresDb)
-# class AsesoresDbAdmin(admin.ModelAdmin):
-#     list_display = ('cod_asesor', 'nombre', 'apellido')
-#     list_filter = ('cod_asesor', 'nombre')
-    
+

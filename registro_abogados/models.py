@@ -92,13 +92,13 @@ class AsesoresDb(models.Model):
     nombre = models.CharField(max_length=20, blank=True, null=True)
     apellido = models.CharField(max_length=20, blank=True, null=True)
     direccion = models.CharField(max_length=154, blank=True, null=True)
-    ciudad = models.IntegerField(blank=True, null=True)
+    ciudad = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudad', blank=True, null=True, related_name='AsesoresDb.ciudad+')
     direccion2 = models.CharField(max_length=154, blank=True, null=True)
-    ciudad2 = models.IntegerField(blank=True, null=True)
+    ciudad2 = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudad2', blank=True, null=True, related_name='AsesoresDb.ciudad2+')
     celular = models.CharField(max_length=15, blank=True, null=True)
     mail = models.CharField(max_length=50, blank=True, null=True)
     t_asesor = models.CharField(max_length=15, blank=True, null=True)
-    comision = models.IntegerField(blank=True, null=True)
+    comision = models.ForeignKey('Comisiones', models.DO_NOTHING, db_column='comision', blank=True, null=True)
     cedula = models.CharField(max_length=15, blank=True, null=True)
     c_cedula = models.CharField(max_length=150, blank=True, null=True)
     fecha = models.DateField(blank=True, null=True)
@@ -106,8 +106,8 @@ class AsesoresDb(models.Model):
     perfil = models.IntegerField(blank=True, null=True)
     fechanacimiento = models.DateField(db_column='fechaNacimiento', blank=True, null=True)  # Field name made lowercase.
     fechaexpedicion = models.DateField(db_column='fechaExpedicion', blank=True, null=True)  # Field name made lowercase.
-    ciudadexpedicion = models.IntegerField(db_column='ciudadExpedicion', blank=True, null=True)  # Field name made lowercase.
-    genero = models.IntegerField()
+    ciudadexpedicion = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudadExpedicion', blank=True, null=True, related_name='AsesoresDb.ciudadexpedicion+')  # Field name made lowercase.
+    genero = models.ForeignKey('Genero', models.DO_NOTHING, db_column='genero')
 
     class Meta:
         managed = False
@@ -115,3 +115,16 @@ class AsesoresDb(models.Model):
         
     def __str__(self):
         return self.nombre
+
+class Comisiones(models.Model):
+    codigo = models.AutoField(primary_key=True)
+    tipo = models.CharField(max_length=15, blank=True, null=True)
+    descripcion = models.CharField(max_length=20, blank=True, null=True)
+    valor = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'comisiones'
+
+    def __str__(self):
+        return self.tipo

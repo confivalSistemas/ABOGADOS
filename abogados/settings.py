@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'registro_abogados.apps.RegistroAbogadosConfig',
+    'registro_asesores.apps.RegistroAsesoresConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
