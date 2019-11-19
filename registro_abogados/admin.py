@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import DbAbogados, Genero, Municipio, Perfil, AsesoresDb, TipoSeguimiento
+from .models import DbAbogados, Genero, Municipio, Perfil
 # # Register your models here.
 
 #admin.site.register(DbAbogados)
@@ -37,8 +37,8 @@ class GeneroAdmin(admin.ModelAdmin):
 #admin.site.register(AsesoresDb)
 #===========================================================================================================
 #=> PERSONALIZANDO ASESORESDB
-@admin.register(AsesoresDb)
-class AsesoresDbAdmin(admin.ModelAdmin):
-    list_display = ('cod_asesor', 'nombre', 'apellido')
-    list_filter = ('cod_asesor', 'nombre')
+# @admin.register(AsesoresDb)
+# class AsesoresDbAdmin(admin.ModelAdmin):
+#     list_display = ('cod_asesor', 'nombre', 'apellido')
+#     list_filter = ('cod_asesor', 'nombre')
     
