@@ -60,8 +60,6 @@ class DbAbogados(models.Model):
         managed = True
         db_table = 'db_abogados'
     
-
-
 class Perfil(models.Model):
     codigo = models.AutoField(primary_key=True)
     perfil = models.CharField(max_length=50)

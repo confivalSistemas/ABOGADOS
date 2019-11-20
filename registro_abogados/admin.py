@@ -8,6 +8,39 @@ from .models import DbAbogados, Genero, Municipio, Perfil
 class DbAbogadosAdmin(admin.ModelAdmin):
     list_display = ('nombres', 'apellidos', 'cedula', 'tarjeta_p', 'fecha_nacimiento', 'direccion', 'ciudad', 'ciudadnombre')
     list_filter = ('nombres', 'cedula')
+    search_fields = (
+        'codigo',
+        'nombres',
+        'apellidos', 
+        'cedula',
+        'tarjeta_p',
+        'fecha_nacimiento',
+        'direccion',
+        'ciudadnombre',
+        'departamento', 
+        'direccion2',
+        'empresa',
+        'celular2',
+        'celular1',
+        'celular',
+        'fijo2',
+        'fijo1',
+        'fijo',
+        'fax',
+        'e_mail1',
+        'e_mail2',
+        'contacto',
+        'fecha_actualizacion',
+        'observaciones',
+        'copiacc',
+        'copiatp',
+        'fechaexpedicion',     
+    )   
+                        
+                        
+
+
+
 admin.site.register(DbAbogados, DbAbogadosAdmin)
 
 #admin.site.register(Municipio)
