@@ -6,9 +6,9 @@ from .models import DbAbogados, Genero, Municipio, Perfil
 #===========================================================================================================
 #=> PERSONALIZANDO DBABOGADOS
 class DbAbogadosAdmin(admin.ModelAdmin):
-    list_display = ('nombres', 'apellidos', 'cedula', 'tarjeta_p', 'fecha_nacimiento', 'direccion', 'ciudad', 'ciudadnombre')
+    list_display = ('nombres', 'apellidos', 'cedula', 'tarjeta_p', 'actualizacion', 'ciudad', 'genero', 'perfil',)
     list_filter = ('nombres', 'cedula')
-    search_fields = (
+    search_fields = [
         'codigo',
         'nombres',
         'apellidos', 
@@ -16,9 +16,12 @@ class DbAbogadosAdmin(admin.ModelAdmin):
         'tarjeta_p',
         'fecha_nacimiento',
         'direccion',
+        'ciudad__codigo',
         'ciudadnombre',
         'departamento', 
         'direccion2',
+        'ciudad2__codigo',
+        'perfil__perfil',
         'empresa',
         'celular2',
         'celular1',
@@ -31,11 +34,17 @@ class DbAbogadosAdmin(admin.ModelAdmin):
         'e_mail2',
         'contacto',
         'fecha_actualizacion',
+        'actualizacion__nombre',
         'observaciones',
         'copiacc',
         'copiatp',
-        'fechaexpedicion',     
-    )   
+        'fechaexpedicion',
+        'ciudadexpedicion__codigo',
+        'genero__genero',     
+    ]  
+    #search_fields = ['genero__genero',] 
+
+
                         
                         
 
