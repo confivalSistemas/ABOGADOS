@@ -9,6 +9,28 @@ from .models import AsesoresDb, Genero, Municipio, Perfilasesor, Comisiones
 class AsesoresDbAdmin(admin.ModelAdmin):
     list_display = ('cod_asesor', 'nombre', 'apellido')
     list_filter = ('cod_asesor', 'nombre')
+    search_fields = [
+        'cod_asesor',
+        'nombre',
+        'apellido',
+        'direccion',
+        #'ciudad',
+        'direccion2',
+        #'ciudad2',
+        'celular',
+        'mail',
+        't_asesor',
+        #'comision',
+        'cedula',
+        'c_cedula',
+        'fecha',
+        'fecha_s',
+        'perfil',
+        'fechanacimiento',
+        'fechaexpedicion',
+        #'ciudadexpedicion',
+        #'genero',
+    ]
 admin.site.register(AsesoresDb, AsesoresDbAdmin)
     
 #admin.site.register(Perfilasesor)
