@@ -7,20 +7,20 @@ from .models import AsesoresDb, Genero, Municipio, Perfilasesor, Comisiones
 #=> PERSONALIZANDO ASESORESDB
 
 class AsesoresDbAdmin(admin.ModelAdmin):
-    list_display = ('cod_asesor', 'nombre', 'apellido')
+    list_display = ('cod_asesor', 'nombre', 'apellido', 'comision', 'genero')
     list_filter = ('cod_asesor', 'nombre')
     search_fields = [
         'cod_asesor',
         'nombre',
         'apellido',
         'direccion',
-        #'ciudad',
+        'ciudad__municipio',
         'direccion2',
-        #'ciudad2',
+        'ciudad2__municipio',
         'celular',
         'mail',
         't_asesor',
-        #'comision',
+        'comision__tipo',
         'cedula',
         'c_cedula',
         'fecha',
@@ -28,8 +28,8 @@ class AsesoresDbAdmin(admin.ModelAdmin):
         'perfil',
         'fechanacimiento',
         'fechaexpedicion',
-        #'ciudadexpedicion',
-        #'genero',
+        'ciudadexpedicion__municipio',
+        'genero__genero',
     ]
 admin.site.register(AsesoresDb, AsesoresDbAdmin)
     
