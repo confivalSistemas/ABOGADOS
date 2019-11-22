@@ -17,10 +17,9 @@ class Municipio(models.Model):
     class Meta:
         managed = False
         db_table = 'municipio'
-
+    
     def __str__(self):
         return self.municipio
-
 
 class DbAbogados(models.Model):
     codigo = models.AutoField(primary_key=True)
@@ -59,7 +58,8 @@ class DbAbogados(models.Model):
     class Meta:
         managed = True
         db_table = 'db_abogados'
-    
+
+
 class Perfil(models.Model):
     codigo = models.AutoField(primary_key=True)
     perfil = models.CharField(max_length=50)
@@ -70,6 +70,7 @@ class Perfil(models.Model):
 
     def __str__(self):
         return self.perfil
+
 
 
 class Genero(models.Model):
@@ -84,15 +85,14 @@ class Genero(models.Model):
     def __str__(self):
         return self.genero
 
-
 class AsesoresDb(models.Model):
     cod_asesor = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=20, blank=True, null=True)
     apellido = models.CharField(max_length=20, blank=True, null=True)
     direccion = models.CharField(max_length=154, blank=True, null=True)
-    ciudad = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudad', blank=True, null=True, related_name='AsesoresDb.ciudad+')
+    ciudad = models.ForeignKey(Municipio, models.DO_NOTHING, db_column='ciudad', blank=True, null=True, related_name='AsesoresDb.ciudad+')
     direccion2 = models.CharField(max_length=154, blank=True, null=True)
-    ciudad2 = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudad2', blank=True, null=True, related_name='AsesoresDb.ciudad2+')
+    ciudad2 = models.ForeignKey(Municipio, models.DO_NOTHING, db_column='ciudad2', blank=True, null=True, related_name='AsesoresDb.ciudad2+')
     celular = models.CharField(max_length=15, blank=True, null=True)
     mail = models.CharField(max_length=50, blank=True, null=True)
     t_asesor = models.CharField(max_length=15, blank=True, null=True)
@@ -104,13 +104,13 @@ class AsesoresDb(models.Model):
     perfil = models.IntegerField(blank=True, null=True)
     fechanacimiento = models.DateField(db_column='fechaNacimiento', blank=True, null=True)  # Field name made lowercase.
     fechaexpedicion = models.DateField(db_column='fechaExpedicion', blank=True, null=True)  # Field name made lowercase.
-    ciudadexpedicion = models.ForeignKey('Municipio', models.DO_NOTHING, db_column='ciudadExpedicion', blank=True, null=True, related_name='AsesoresDb.ciudadexpedicion+')  # Field name made lowercase.
-    genero = models.ForeignKey('Genero', models.DO_NOTHING, db_column='genero')
+    ciudadexpedicion = models.ForeignKey(Municipio, models.DO_NOTHING, db_column='ciudadExpedicion', blank=True, null=True, related_name='AsesoresDb.ciudadexpedicion+')  # Field name made lowercase.
+    genero = models.ForeignKey(Genero, models.DO_NOTHING, db_column='genero')
 
     class Meta:
         managed = False
         db_table = 'asesores_db'
-        
+
     def __str__(self):
         return self.nombre
 

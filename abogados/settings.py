@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': 'C:/Users/Intel I7/Desktop/CONFIVAL/PROYECTOS DJANGO/ABOGADOS/registro_abogados/conexion.cnf',
+            'read_default_file': 'C:/Users/Intel I7/Desktop/CONFIVAL/PROYECTOS DJANGO/ABOGADOS/abogados/conexion.cnf',
             'init_command': 'SET default_storage_engine=INNODB',
         },        
     }

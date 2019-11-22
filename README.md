@@ -167,3 +167,9 @@ from .models import DbAbogados
 
 admin.site.register(DbAbogados)
 ```
+22. Configurar archivo models.py de app registro_abogados registro_asesores seguimiento en inspectdb con las tablas necesarias
+
+```python
+python manage.py inspectdb municipio db_abogados perfil genero asesores_db comisiones > registro_abogados/models.py
+
+```

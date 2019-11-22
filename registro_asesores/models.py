@@ -31,7 +31,7 @@ class AsesoresDb(models.Model):
     genero = models.ForeignKey('Genero', models.DO_NOTHING, db_column='genero')
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'asesores_db'
 
 
