@@ -45,10 +45,9 @@ class DbAbogados(models.Model):
     class Meta:
         managed = False
         db_table = 'db_abogados'
-
+    
     def __str__(self):
-        return self.nombres + ' ' + self.apellidos
-
+        return self.nombres
 
 
 class Perfil(models.Model):
@@ -71,7 +70,7 @@ class Seguimiento(models.Model):
     estado = models.ForeignKey('Subitemseguimiento', models.DO_NOTHING, db_column='estado', blank=True, null=True, related_name='Seguimiento.estado+')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'seguimiento'
 
 
@@ -82,6 +81,9 @@ class TipoSeguimiento(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_seguimiento'
+    
+    def __str__(self):
+        return self.seguimiento
 
 
 class Subitemseguimiento(models.Model):
@@ -92,6 +94,9 @@ class Subitemseguimiento(models.Model):
     class Meta:
         managed = False
         db_table = 'subitemseguimiento'
+    
+    def __str__(self):
+        return self.subsegumiento
 
 
 class AsesoresDb(models.Model):
@@ -119,9 +124,10 @@ class AsesoresDb(models.Model):
     class Meta:
         managed = False
         db_table = 'asesores_db'
-
+    
     def __str__(self):
-        return self.nombre + ' ' + self.apellido
+        return self.nombre
+
 
 class Municipio(models.Model):
     codigo = models.AutoField(primary_key=True)

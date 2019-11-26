@@ -171,5 +171,7 @@ admin.site.register(DbAbogados)
 
 ```python
 python manage.py inspectdb municipio db_abogados perfil genero asesores_db comisiones > registro_abogados/models.py
+python manage.py inspectdb asesores_db municipio perfilasesor genero comisiones > registro_asesores/models.py
+python manage.py inspectdb db_abogados perfil seguimiento tipo_seguimiento subitemseguimiento asesores_db municipio comisiones genero > seguimiento/models.py
 
 ```
