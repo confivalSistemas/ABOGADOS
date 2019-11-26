@@ -16,10 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-#para tomar URL relativas a ridereccionar
+# para tomar URL relativas a ridereccionar
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+
+# para personalizacion de administrador
+admin.site.site_header = 'Administración de aplicativos Confival'
+admin.site.site_title = 'Administración Confival'
+admin.site.index_title = 'Sitio administración CRM'
 
 urlpatterns = [
     path('home/', include('registro_abogados.urls')),    

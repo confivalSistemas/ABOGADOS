@@ -31,6 +31,25 @@ class AsesoresDbAdmin(admin.ModelAdmin):
         'ciudadexpedicion__municipio',
         'genero__genero',
     ]
+    
+    fieldsets = (
+        ('Datos Básicos', {
+            'fields': ('nombre', 'apellido', 'cedula', 'fechanacimiento', 'fechaexpedicion', 'ciudadexpedicion', 'genero', 'perfil')
+        }),
+
+        ('Contacto', {
+            'fields': ('celular', 'mail', 't_asesor')
+        }),
+
+        ('Localización', {
+            'fields': ('direccion', 'ciudad', 'direccion2', 'ciudad2')
+        }),
+
+        ('Información Adicional', {
+            'fields': ('comision', 'c_cedula', 'fecha', 'fecha_s')
+        }),
+    )
+
 admin.site.register(AsesoresDb, AsesoresDbAdmin)
     
 #admin.site.register(Perfilasesor)

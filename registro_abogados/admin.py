@@ -6,7 +6,7 @@ from .models import DbAbogados, Genero, Municipio, Perfil
 #===========================================================================================================
 #=> PERSONALIZANDO DBABOGADOS
 class DbAbogadosAdmin(admin.ModelAdmin):
-    list_display = ('nombres', 'apellidos', 'cedula', 'tarjeta_p', 'actualizacion', 'ciudad', 'genero', 'perfil',)
+    list_display = ('codigo', 'nombres', 'apellidos', 'cedula', 'tarjeta_p', 'actualizacion', 'ciudad', 'genero', 'perfil',)
     list_filter = ('nombres', 'cedula')
     search_fields = [
         'codigo',
@@ -42,13 +42,25 @@ class DbAbogadosAdmin(admin.ModelAdmin):
         'ciudadexpedicion__codigo',
         'genero__genero',     
     ]  
-    #search_fields = ['genero__genero',] 
+    #search_fields = ['genero__genero',]
+    fieldsets = (
+        ('Datos', {
+            'fields': ('nombres', 'apellidos', 'fecha_nacimiento', 'genero', 'cedula', 'fechaexpedicion', 'ciudadexpedicion', 'tarjeta_p', 'perfil')
+        }),
 
+        ('Contacto', {
+            'fields': ('celular', 'celular1', 'celular2', 'fijo', 'fijo1', 'fijo2', 'fax', 'e_mail1', 'e_mail2')
+        }),
 
-                        
-                        
+        ('Localización', {
+            'fields': ('direccion', 'ciudad', 'direccion2', 'ciudad2')
+        }),
 
-
+        ('Información Adicional', {
+            'fields': ('empresa', 'fecha_actualizacion', 'actualizacion', 'observaciones', 'contacto')
+        }),        
+    )                    
+                 
 
 admin.site.register(DbAbogados, DbAbogadosAdmin)
 

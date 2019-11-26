@@ -47,7 +47,7 @@ class DbAbogados(models.Model):
         db_table = 'db_abogados'
     
     def __str__(self):
-        return self.nombres
+        return self.nombres+' '+self.apellidos
 
 
 class Perfil(models.Model):
