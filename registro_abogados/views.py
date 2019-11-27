@@ -58,3 +58,9 @@ class FormularioView(generic.ListView):
 
     def get_queryset(self):
         return DbAbogados.objects.order_by('codigo')
+
+class AbogadosRegistradosView(generic.ListView):
+    model= DbAbogados
+    context_object_name = 'abogados'
+    queryset = DbAbogados.objects.all()[:20]
+    template_name = 'registro_abogados/abogados_list.html'

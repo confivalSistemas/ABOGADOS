@@ -17,4 +17,11 @@ class SeguimientoAdmin(admin.ModelAdmin):
         'observacion',
         'estado__subsegumiento',
     ]
+
+    # fieldsets = (
+    #     ('Datos', {
+    #         'fields': ('',)
+    #     }),
+    # )
+
 admin.site.register(Seguimiento, SeguimientoAdmin)

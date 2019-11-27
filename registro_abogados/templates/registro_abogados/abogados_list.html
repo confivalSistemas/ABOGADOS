@@ -1,0 +1,15 @@
+{% extends "registro_abogados/base_generic.html" %}
+
+{% block content %}
+    <h1>Abogados Registrados</h1>
+    {% if abogados %}
+        <ul>
+            {% for i in abogados %}
+                <p>{{ i.nombres }} {{i.apellidos}}</p>
+                </br>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay abogados registrados en el area Comercial de Confival</p>
+    {% endif %}
+{% endblock %}
