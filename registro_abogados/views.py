@@ -62,8 +62,10 @@ class FormularioView(generic.ListView):
 class AbogadosRegistradosView(generic.ListView):
     model= DbAbogados
     context_object_name = 'abogados'
-    queryset = DbAbogados.objects.all()[:20]
+    #queryset = DbAbogados.objects.all()[:20]
+    queryset = DbAbogados.objects.all()
     template_name = 'registro_abogados/abogados_list.html'
+    paginate_by = 10
 
 class AbogadoDetailView(generic.DetailView):
     model = DbAbogados
