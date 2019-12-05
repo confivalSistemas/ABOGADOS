@@ -58,6 +58,7 @@ class DbAbogados(models.Model):
     class Meta:
         managed = True
         db_table = 'db_abogados'
+        verbose_name = 'Abogado'
 
 
 class Perfil(models.Model):
@@ -81,6 +82,7 @@ class Genero(models.Model):
     class Meta:
         managed = False
         db_table = 'genero'
+        verbose_name = 'Genero'
 
     def __str__(self):
         return self.genero

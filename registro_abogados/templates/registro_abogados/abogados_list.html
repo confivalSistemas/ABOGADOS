@@ -5,11 +5,11 @@
     {% if abogados %}
         <ul>
             {% for i in abogados %}
-                <p>{{ i.nombres }} {{i.apellidos}}</p>
+                <p>{{ i.nombres }} {{i.apellidos}} {{i.cedula}}</p>
                 </br>
             {% endfor %}
         </ul>
     {% else %}
-        <p>No hay abogados registrados en el area Comercial de Confival</p>
+        <p>No hay abogados registrados del area juridica de Confival</p>
     {% endif %}
 {% endblock %}
