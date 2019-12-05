@@ -5,7 +5,7 @@ from . import views
 app_name = 'registro_abogados'
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    path('', views.index, name='index'),
     # rutas para abogados
     path('abogadosRegistrados/', views.AbogadosRegistradosView.as_view(), name = 'abogadosRegistrados'),
     path('abogadosRegistrados/<int:pk>', views.AbogadoDetailView.as_view(), name = 'abogado-detail'),

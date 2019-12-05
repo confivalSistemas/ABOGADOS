@@ -59,6 +59,12 @@ class DbAbogados(models.Model):
         managed = True
         db_table = 'db_abogados'
         verbose_name = 'Abogado'
+    
+    def get_absolute_url(self):
+        """
+        Devuelve la url para acceder a una instancia particular del modelo.
+        """
+        return reverse('abogado-detail', args=[str(self.codigo)])
 
 
 class Perfil(models.Model):

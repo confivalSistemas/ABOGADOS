@@ -5,7 +5,10 @@
     {% if abogados %}
         <ul>
             {% for i in abogados %}
-                <p>{{ i.nombres }} {{i.apellidos}} {{i.cedula}}</p>
+                <li>
+                    <a href="{% url 'registro_abogados:abogadosRegistrados/<int:pk>' %}"> Codigo: {{i.codigo }}</a> Nombres: <strong>{{ i.nombres }}</strong> Apellidos: <strong>{{i.apellidos}}</strong> Identificación: <strong>{{i.cedula}}</strong>
+                </li>
+                
                 </br>
             {% endfor %}
         </ul>
