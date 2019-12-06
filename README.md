@@ -175,3 +175,32 @@ python manage.py inspectdb asesores_db municipio perfilasesor genero comisiones 
 python manage.py inspectdb db_abogados perfil seguimiento tipo_seguimiento subitemseguimiento asesores_db municipio comisiones genero > seguimiento/models.py
 
 ```
+
+22. Configuraciones de Sesión
+
+```bash
+configuracion establecida de sesion en settings.py INSTALLED_APPS y MIDDLEWARE
+
+agregar en settings.py
+
+# Para cambiar el comportamiento donde el sitio actualice la base de datos y envie la cookie en cada solicitud
+SESSION_SAVE_EVERY_REQUEST = True
+
+```
+```python
+def index(request):
+    .
+    .
+    .
+    # Numero de visitas de esta vista, contadas en la variable sesion
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    
+    # Renderiza la plantilla HTML index.html con los datos en la variable contexto
+    return render(
+        request,
+        'registro_abogados/index.html',
+        context={'num_abogados':num_abogados,'num_municipios':num_municipios, 'num_visits':num_visits},
+    )
+
+```

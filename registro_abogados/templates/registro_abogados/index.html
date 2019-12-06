@@ -10,4 +10,7 @@
         <li><strong>Abogados:</strong> {{ num_abogados }}</li>
         <li><strong>Municipios:</strong> {{ num_municipios }}</li>        
     </ul>
+
+    <!-- configuraciones de sesion -->
+    <p> Has visitado esta pagina {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
 {% endblock %}
