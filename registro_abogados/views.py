@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views import generic
 from django.template import loader
 from django import forms
+from django.contrib.auth.mixins import LoginRequiredMixin # para que el usuario inicie sesion antes de ver el contenido
 
 #========================================================================================================================================
 #==> configuraciones para validacion
@@ -66,7 +67,7 @@ class FormularioView(generic.ListView):
     def get_queryset(self):
         return DbAbogados.objects.order_by('codigo')
 
-class AbogadosRegistradosView(generic.ListView):
+class AbogadosRegistradosView(LoginRequiredMixin, generic.ListView):
     model= DbAbogados
     context_object_name = 'abogados'
     #queryset = DbAbogados.objects.all()[:20]
