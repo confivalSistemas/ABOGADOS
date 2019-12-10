@@ -6,6 +6,13 @@ from django.template import loader
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin # para que el usuario inicie sesion antes de ver el contenido
 
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+
+from .forms import FormularioAbogados
+import datetime
+
 #========================================================================================================================================
 #==> configuraciones para validacion
 from django.core.exceptions import ValidationError
@@ -37,11 +44,6 @@ def index(request):
         'registro_abogados/index.html',
         context={'num_abogados':num_abogados,'num_municipios':num_municipios, 'num_visits':num_visits},
     )
-
-    
-
-        
-
 # def registro(request):
 #     latest_abogado_list = DbAbogados.objects.order_by('codigo')
 #     template = loader.get_template('registro_abogados/prueba_register.html')
@@ -68,6 +70,10 @@ class FormularioView(generic.ListView):
         return DbAbogados.objects.order_by('codigo')
 
 class AbogadosRegistradosView(LoginRequiredMixin, generic.ListView):
+    #==================================================================
+    # login_url = '/login/'
+    # redirect_field_name = 'home'
+    #==================================================================
     model= DbAbogados
     context_object_name = 'abogados'
     #queryset = DbAbogados.objects.all()[:20]
@@ -79,3 +85,47 @@ class AbogadoDetailView(generic.DetailView):
     model = DbAbogados
     template_name = 'registro_abogados/abogado_detail.html'
     context_object_name = 'abogado'
+
+#=======================================================================================
+# Vista para test Form en Django
+#=======================================================================================
+#==> SUJETO A VERIFICACION NO FUNCIONO PRUEBA SOLICITUD A FORMULARIO
+
+def get_name(request):
+    # si esto es una solicitud POST se necesita procesar la forma de datos
+    if request.method == 'POST':
+        # se crea una instancia forma y poblamos esta con datos de la solicitud
+        form = FormularioAbogados(request.POST)
+        # verifica si es valido
+        if form.is_valid():
+            # procesa los datos en form.cleaned_data como requerido
+            # ...
+            # redirige a una nueva URL:
+            return HttpResponseRedirect('/Gracias/')
+    
+    # si un GET (u otros muchos metodos) pueden ser creadeos en blanco
+    else:
+        form = FormularioAbogados()
+    
+    return render(request, 'formularios.html', {'form':form})
+
+
+
+#========================================================================================
+# EDITANDO VISTAS GENERICAS
+#========================================================================================
+class AbogadoCreate(CreateView):
+    model = DbAbogados
+    fields = '__all__'
+
+class AbogadoUpdate(UpdateView):
+    model = DbAbogados
+    fields = '__all__'
+
+class AbogadoDelete(DeleteView):
+    model = DbAbogados
+    #success_url = reverse_lazy('authors')
+
+
+
+
