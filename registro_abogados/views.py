@@ -118,14 +118,17 @@ class AbogadoCreate(LoginRequiredMixin, CreateView):
     model = DbAbogados
     fields = '__all__'
     template_name = 'registro_abogados/abogado_form.html'
+    context_object_name = 'abogado'
 
 class AbogadoUpdate(UpdateView):
     model = DbAbogados
     fields = '__all__'
 
-class AbogadoDelete(DeleteView):
+class AbogadoDelete(LoginRequiredMixin, DeleteView):
     model = DbAbogados
     #success_url = reverse_lazy('authors')
+    template_name = 'registro_abogados/abogado_confirm_delete.html'
+    context_object_name = 'abogado'
 
 
 
