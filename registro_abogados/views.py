@@ -114,9 +114,10 @@ def get_name(request):
 #========================================================================================
 # EDITANDO VISTAS GENERICAS
 #========================================================================================
-class AbogadoCreate(CreateView):
+class AbogadoCreate(LoginRequiredMixin, CreateView):
     model = DbAbogados
     fields = '__all__'
+    template_name = 'registro_abogados/abogado_form.html'
 
 class AbogadoUpdate(UpdateView):
     model = DbAbogados
