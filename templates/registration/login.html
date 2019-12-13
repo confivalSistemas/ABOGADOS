@@ -18,18 +18,21 @@
     {% csrf_token %}
     <div>
         <td>{{ form.username.label_tag }}</td>
+        <br>
         <td>{{ form.username }}</td>
     </div>
     <div>
         <td>{{ form.password.label_tag }}</td>
+        <br>
         <td>{{ form.password }}</td>        
     </div>
     <div>
-        <input type="submit" value="login" />
+        <br>
+        <input type="submit" value="login" />       
         <input type="hidden" name="next" value="{{ next }}" />
     </div>
     <br>
-    <input class="btn btn-primary" type="submit" value="Login">
+    <!-- <input class="btn btn-primary" type="submit" value="Login"> -->
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}

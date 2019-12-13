@@ -32,15 +32,5 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/home/', permanent=True)),
     # Add Django site authentication urls (for login, logout, password management )
     path('accounts/', include('django.contrib.auth.urls')),
-    #===============================================================
-    #=> lo anterior añade automaticamente las siguientes 
-    # path("accounts/login/ [name='login']", include('django.contrib.auth.urls')),
-    # path("accounts/logout/ [name='logout']", include('django.contrib.auth.urls')),
-    # path("accounts/password_changue/ [name='password_change']", include('django.contrib.auth.urls')),
-    # path("accounts/password_changue/done/ [name='password_change_done']", include('django.contrib.auth.urls')),
-    # path("accounts/password_reset/ [name='password_reset']", include('django.contrib.auth.urls')),
-    # path("accounts/password_reset/done/ [name='password_reset_done']", include('django.contrib.auth.urls')),
-    # path("accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/ [name='password_reset_confirm']", include('django.contrib.auth.urls')),
-    # path("accounts/reset/done/ [name='password_reset_complete']", include('django.contrib.auth.urls'))
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+] 
 

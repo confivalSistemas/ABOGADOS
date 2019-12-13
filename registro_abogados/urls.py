@@ -16,4 +16,8 @@ urlpatterns = [
     path('abogado/create/', views.AbogadoCreate.as_view(), name='abogado_create'),
     path('abogado/<int:pk>/update', views.AbogadoUpdate.as_view(), name='abogado_update'),
     path('abogado/<int:pk>/delete', views.AbogadoDelete.as_view(), name='abogado_delete'),
+
+    # rutas para formas
+    path('createAbogado', views.regAbogado),
+    path('createMunicipio', views.municipioDetail),
 ]

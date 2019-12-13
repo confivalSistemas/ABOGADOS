@@ -23,23 +23,40 @@
             <div class="col-sm-2">
                 {% block sidebar %}
                 <ul class="sidebar-nav">
-                    <li><a href="{% url 'registro_abogados:index' %}">Home</a></li>
-                    <li><a href="">Sentencias/Conciliaciones</a></li>
-                    <li><a href="">Beneficiarios</a></li>
-                    <li><a href="">Asesores</a></li>
-                    <li><a href="">Gestion Cliente</a></li>
-                    <li><a href="">Agenda</a></li>
-                    <li><a href="{% url 'registro_abogados:abogadosRegistrados' %}">Abogados</a></li>
-                    <li><a href="">Actividad en Softaware</a></li>
-                    <li><a href="">Juzgados/Tribunales</a></li>
-                    <li><a href="">Seguridad</a></li>
+                    <li><a href="{% url 'registro_abogados:index' %}">Home</a></li>                    
 
                     <!-- autenticacion del usuario -->
                     {% if user.is_authenticated %}
                         <li>User: {{ user.get_username }}</li>
+                        <br>
+                        <li><a href="{% url 'registro_abogados:index' %}">Home</a></li>
+                        <li><a href="">Sentencias/Conciliaciones</a></li>
+                        <li><a href="">Beneficiarios</a></li>
+                        <li><a href="">Asesores</a></li>
+                        <li><a href="">Gestion Cliente</a></li>
+                        <li><a href="">Agenda</a></li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Abogados
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{% url 'registro_abogados:abogado_create' %}">Registro Abogados</a>
+                              <a class="dropdown-item" href="{% url 'registro_abogados:abogadosRegistrados' %}">Abogados Registrados</a>
+                              <a class="dropdown-item" href="#">Cargar Documentos de Abogados</a>
+                              <a class="dropdown-item" href="#">Lista de Documentos de Abogados</a>
+                              <a class="dropdown-item" href="#">Lista de Abogados sentencia</a>                              
+                            </div>
+                        </li>
+
+                        <li><a href="">Actividad en Softaware</a></li>
+                        <li><a href="">Juzgados/Tribunales</a></li>
+                        <li><a href="">Seguridad</a></li>
+                        <br>
                         <li><a href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+                        <li><a href="">Register</a></li>
                     {% endif %}
                 </ul>
                 {% endblock %}

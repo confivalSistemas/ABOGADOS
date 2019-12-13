@@ -89,3 +89,4 @@ class GeneroAdmin(admin.ModelAdmin):
     list_filter = ('codigo','abreviatura')
 
 
+

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.views import generic
 from django.template import loader
@@ -10,7 +10,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 
-from .forms import FormularioAbogados
+from .forms import FormularioAbogados, MunicipioForm
 import datetime
 
 #========================================================================================================================================
@@ -55,7 +55,7 @@ def index(request):
 #=========================================================================================================================================
 #==> Aqui se hace la configuracion personalizada de vistas
 
-class RegistroView(generic.ListView):
+class RegistroView(LoginRequiredMixin, generic.ListView):
     template_name = 'registro_abogados/db_abogados.html'
     context_object_name = 'latest_abogado_list'
 
@@ -81,7 +81,7 @@ class AbogadosRegistradosView(LoginRequiredMixin, generic.ListView):
     template_name = 'registro_abogados/abogados_list.html'
     paginate_by = 10
 
-class AbogadoDetailView(generic.DetailView):
+class AbogadoDetailView(LoginRequiredMixin, generic.DetailView):
     model = DbAbogados
     template_name = 'registro_abogados/abogado_detail.html'
     context_object_name = 'abogado'
@@ -111,6 +111,33 @@ def get_name(request):
 
 
 
+def regAbogado(request):
+
+    if request.method == 'POST':
+        form = FormularioAbogados(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            
+            print(name, email)
+
+    form = FormularioAbogados()
+    return render(request, 'registro_abogados/form.html', {'form':form})
+
+def municipioDetail(request):
+
+    if request.method == 'POST':
+        form = MunicipioForm(request.POST)
+        if form.is_valid():         
+            print("valid")
+
+    form = MunicipioForm()
+    return render(request, 'registro_abogados/form.html', {'form':form})
+
+
+
+
+
 #========================================================================================
 # EDITANDO VISTAS GENERICAS
 #========================================================================================
@@ -130,6 +157,8 @@ class AbogadoDelete(LoginRequiredMixin, DeleteView):
     template_name = 'registro_abogados/abogado_confirm_delete.html'
     context_object_name = 'abogado'
 
+
+   
 
 
 
