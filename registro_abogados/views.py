@@ -109,8 +109,6 @@ def get_name(request):
     
     return render(request, 'formularios.html', {'form':form})
 
-
-
 def regAbogado(request):
 
     if request.method == 'POST':
@@ -120,8 +118,9 @@ def regAbogado(request):
             email = form.cleaned_data['email']
             
             print(name, email)
-
-    form = FormularioAbogados()
+    else:
+        form = FormularioAbogados()
+        
     return render(request, 'registro_abogados/form.html', {'form':form})
 
 def municipioDetail(request):
@@ -130,13 +129,10 @@ def municipioDetail(request):
         form = MunicipioForm(request.POST)
         if form.is_valid():         
             print("valid")
+            form.save()
 
     form = MunicipioForm()
     return render(request, 'registro_abogados/form.html', {'form':form})
-
-
-
-
 
 #========================================================================================
 # EDITANDO VISTAS GENERICAS

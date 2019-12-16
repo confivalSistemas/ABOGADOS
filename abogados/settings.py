@@ -31,15 +31,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # mis apps
     'registro_abogados.apps.RegistroAbogadosConfig',
     'registro_asesores.apps.RegistroAsesoresConfig',
     'seguimiento.apps.SeguimientoConfig',
+
+    # apps de django
     'django.contrib.admin',
     'django.contrib.auth', # Core authentication framework and its default models.
     'django.contrib.contenttypes', # Django content type system (allows permissions to be associated with models).
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # apps form // pip install django-crispy-forms
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +145,5 @@ SESSION_SAVE_EVERY_REQUEST = True
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

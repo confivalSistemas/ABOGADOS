@@ -176,7 +176,7 @@ python manage.py inspectdb db_abogados perfil seguimiento tipo_seguimiento subit
 
 ```
 
-22. Configuraciones de Sesión
+23. Configuraciones de Sesión
 
 ```bash
 configuracion establecida de sesion en settings.py INSTALLED_APPS y MIDDLEWARE
@@ -203,4 +203,16 @@ def index(request):
         context={'num_abogados':num_abogados,'num_municipios':num_municipios, 'num_visits':num_visits},
     )
 
+```
+24. registro Usuario por medio de forms en django
+
+```bash
+instalar apps form // pip install django-crispy-forms
+
+luego en settings. py agregar en lista de aplicaciones
+    
+'crispy_forms',
+
+configurar variable 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 ```

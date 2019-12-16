@@ -71,6 +71,12 @@ admin.site.register(DbAbogados, DbAbogadosAdmin)
 class MunicipioAdmin(admin.ModelAdmin):
     list_display = ('codigo', 'codigo_dane', 'departamento', 'municipio')
     list_filter = ('codigo', 'departamento')
+    search_fields = [
+        'codigo',
+        'codigo_dane',
+        'departamento', 
+        'municipio',            
+    ]
 
 #admin.site.register(Perfil)
 #===========================================================================================================
