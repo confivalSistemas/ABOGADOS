@@ -20,4 +20,5 @@ urlpatterns = [
     # rutas para formas
     path('createAbogado', views.regAbogado),
     path('createMunicipio', views.municipioDetail),
+    path('registroUser', views.registroUsuario), # por el momento para prueba de registro aun no es generica para el proyecto
 ]

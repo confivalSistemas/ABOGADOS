@@ -10,7 +10,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 
-from .forms import FormularioAbogados, MunicipioForm
+from .forms import FormularioAbogados, MunicipioForm, RegisterForm
 import datetime
 
 #========================================================================================================================================
@@ -133,6 +133,11 @@ def municipioDetail(request):
 
     form = MunicipioForm()
     return render(request, 'registro_abogados/form.html', {'form':form})
+
+def registroUsuario(request):
+    form = RegisterForm()
+    return render(request, 'registration/register.html', {'form':form})    
+
 
 #========================================================================================
 # EDITANDO VISTAS GENERICAS
