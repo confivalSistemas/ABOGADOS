@@ -31,21 +31,32 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # mis apps
     'registro_abogados.apps.RegistroAbogadosConfig',
+    'registro_asesores.apps.RegistroAsesoresConfig',
+    'seguimiento.apps.SeguimientoConfig',
+
+    # apps de django
     'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.auth', # Core authentication framework and its default models.
+    'django.contrib.contenttypes', # Django content type system (allows permissions to be associated with models).
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # apps form // pip install django-crispy-forms
+    'crispy_forms',
+
+    # app email
+    'django_mail_admin',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware', # Manages sessions across requests
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',# Associates users with requests using sessions
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -55,7 +66,10 @@ ROOT_URLCONF = 'abogados.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            './templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +92,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': 'C:/Users\Intel I7/Desktop/CONFIVAL/PROYECTOS DJANGO/ABOGADOS/registro_abogados/conexion.cnf',
+            'read_default_file': 'C:/Users/Intel I7/Desktop/CONFIVAL/PROYECTOS DJANGO/ABOGADOS/abogados/conexion.cnf',
             'init_command': 'SET default_storage_engine=INNODB',
         },        
     }
@@ -107,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -122,3 +136,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Para cambiar el comportamiento donde el sitio actualice la base de datos y envie la cookie en cada solicitud
+SESSION_SAVE_EVERY_REQUEST = True
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django_mail_admin.backends.CustomEmailBackend.EmailBackend'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -1,0 +1,18 @@
+{% extends "registro_abogados/base_generic.html" %}
+
+{% block content %}
+    <h1>Abogados Registrados</h1>
+    {% if abogados %}
+        <ul>
+            {% for i in abogados %}
+                <li>
+                    <a href=""> Codigo: {{i.codigo }}</a> Nombres: <strong>{{ i.nombres }}</strong> Apellidos: <strong>{{i.apellidos}}</strong> Identificación: <strong>{{i.cedula}}</strong> Email: <a href="">{{i.e_mail1}}</a>
+                </li>
+                
+                </br>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay abogados registrados del area juridica de Confival</p>
+    {% endif %}
+{% endblock %}

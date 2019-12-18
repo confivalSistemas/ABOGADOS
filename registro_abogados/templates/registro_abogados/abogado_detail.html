@@ -1,0 +1,14 @@
+{% extends "registro_abogados/base_generic.html " %}
+
+{% block content %}
+    <h1>Abogado(a): {{ abogado.nombres }} {{ abogado.apellidos }}</h1>
+    <!-- <p><strong>Author:</strong> <a href="">{{ book.author }}</a></p> author detail link not yet defined -->
+    <p><strong>Codigo:</strong> {{ abogado.codigo }}</p>
+    <p><strong>Cedula:</strong> {{ abogado.cedula }}</p> 
+    <p><strong>Tarjeta Profesional:</strong> {{ abogado.tarjeta_p }}</p>
+    <p><strong>Genero:</strong> {{ abogado.genero }}</p>   
+    <p><strong>Observaciones:</strong> {{ abogado.observaciones }}</p> 
+
+    <!-- <p><strong>Genero:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  -->
+
+{% endblock %}

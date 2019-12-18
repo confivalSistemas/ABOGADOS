@@ -167,3 +167,79 @@ from .models import DbAbogados
 
 admin.site.register(DbAbogados)
 ```
+22. Configurar archivo models.py de app registro_abogados registro_asesores seguimiento en inspectdb con las tablas necesarias
+
+```python
+python manage.py inspectdb municipio db_abogados perfil genero asesores_db comisiones > registro_abogados/models.py
+python manage.py inspectdb asesores_db municipio perfilasesor genero comisiones > registro_asesores/models.py
+python manage.py inspectdb db_abogados perfil seguimiento tipo_seguimiento subitemseguimiento asesores_db municipio comisiones genero > seguimiento/models.py
+
+```
+
+23. Configuraciones de Sesión
+
+```bash
+configuracion establecida de sesion en settings.py INSTALLED_APPS y MIDDLEWARE
+
+agregar en settings.py
+
+# Para cambiar el comportamiento donde el sitio actualice la base de datos y envie la cookie en cada solicitud
+SESSION_SAVE_EVERY_REQUEST = True
+
+```
+```python
+def index(request):
+    .
+    .
+    .
+    # Numero de visitas de esta vista, contadas en la variable sesion
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    
+    # Renderiza la plantilla HTML index.html con los datos en la variable contexto
+    return render(
+        request,
+        'registro_abogados/index.html',
+        context={'num_abogados':num_abogados,'num_municipios':num_municipios, 'num_visits':num_visits},
+    )
+
+```
+24. registro Usuario por medio de forms en django
+
+```bash
+instalar apps form // pip install django-crispy-forms
+
+luego en settings. py agregar en lista de aplicaciones
+    
+'crispy_forms',
+
+configurar variable 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+```
+
+25. Configuracion envio de correo Django Mail Admin
+
+```bash
+instalar: pip install django_mail_admin
+
+luego en settings. py agregar e
+    
+INSTALLED_APPS = (
+    ...
+    'django_mail_admin',
+    ...
+)
+
+aplicar Migrate
+
+python manage.py migrate django_mail_admin
+
+configurar variable en settings.py
+EMAIL_BACKEND = 'django_mail_admin.backends.CustomEmailBackend'
+
+Configurar cron/Celery/RQ job to send/receive email, e.g.
+python manage.py send_queued_mail --processes=1 >> abogados/cron_mail.log 2>&1
+python manage.py get_new_mail >> abogados/cron_mail_receive.log 2>&1
+python manage.py cleanup_mail --days=30 >> abogados/cron_mail_cleanup.log 2>&1
+
+```
