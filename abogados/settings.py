@@ -46,6 +46,9 @@ INSTALLED_APPS = [
 
     # apps form // pip install django-crispy-forms
     'crispy_forms',
+
+    # app email
+    'django_mail_admin',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +147,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django_mail_admin.backends.CustomEmailBackend.EmailBackend'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

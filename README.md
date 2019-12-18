@@ -216,3 +216,30 @@ luego en settings. py agregar en lista de aplicaciones
 configurar variable 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 ```
+
+25. Configuracion envio de correo Django Mail Admin
+
+```bash
+instalar: pip install django_mail_admin
+
+luego en settings. py agregar e
+    
+INSTALLED_APPS = (
+    ...
+    'django_mail_admin',
+    ...
+)
+
+aplicar Migrate
+
+python manage.py migrate django_mail_admin
+
+configurar variable en settings.py
+EMAIL_BACKEND = 'django_mail_admin.backends.CustomEmailBackend'
+
+Configurar cron/Celery/RQ job to send/receive email, e.g.
+python manage.py send_queued_mail --processes=1 >> abogados/cron_mail.log 2>&1
+python manage.py get_new_mail >> abogados/cron_mail_receive.log 2>&1
+python manage.py cleanup_mail --days=30 >> abogados/cron_mail_cleanup.log 2>&1
+
+```
