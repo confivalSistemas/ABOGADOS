@@ -30,7 +30,8 @@ urlpatterns = [
     path('home/', include('registro_abogados.urls')),    
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url='/home/', permanent=True)),
+    
     # Add Django site authentication urls (for login, logout, password management )
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),   
 ] 
 

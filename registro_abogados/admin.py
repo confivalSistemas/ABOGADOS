@@ -5,9 +5,15 @@ from .models import DbAbogados, Genero, Municipio, Perfil
 #admin.site.register(DbAbogados)
 #===========================================================================================================
 #=> PERSONALIZANDO DBABOGADOS
+
+def correo(modeladmin, request, queryset):
+    print("esto es una prueba de correo")
+
+
+
 class DbAbogadosAdmin(admin.ModelAdmin):
-    list_display = ('codigo', 'nombres', 'apellidos', 'cedula', 'tarjeta_p', 'actualizacion', 'ciudad', 'genero', 'perfil',)
-    list_filter = ('nombres', 'cedula')
+    list_display = ('codigo', 'nombres', 'apellidos', 'cedula', 'tarjeta_p', 'actualizacion', 'ciudad', 'genero', 'perfil', 'celular', 'e_mail1')
+    #list_filter = ('nombres', 'cedula')
     search_fields = [
         'codigo',
         'nombres',
@@ -58,9 +64,9 @@ class DbAbogadosAdmin(admin.ModelAdmin):
 
         ('Información Adicional', {
             'fields': ('empresa', 'fecha_actualizacion', 'actualizacion', 'observaciones', 'contacto')
-        }),        
-    )                    
-                 
+        }),
+    )
+              
 
 admin.site.register(DbAbogados, DbAbogadosAdmin)
 
@@ -93,6 +99,5 @@ class PerfilAdmin(admin.ModelAdmin):
 class GeneroAdmin(admin.ModelAdmin):
     list_display = ('genero', 'abreviatura', 'codigo')
     list_filter = ('codigo','abreviatura')
-
 
 
