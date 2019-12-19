@@ -100,3 +100,18 @@ class RegisterForm(forms.Form):
     state = forms.ChoiceField(choices=STATES)
     zip_code = forms.CharField(label='Zip')
     check_me_out = forms.BooleanField(required=False)
+
+#===========================================================================================
+#==> Forma para envio de correo desde plantilla contacto
+class ContactoForm(forms.Form):
+    contact_name = forms.CharField(required=True)
+    contact_email = forms.EmailField(required=True)
+    content = forms.CharField(required=True)
+     
+
+
+
+
+
+
+ 

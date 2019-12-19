@@ -148,6 +148,14 @@ SESSION_SAVE_EVERY_REQUEST = True
 LOGIN_REDIRECT_URL = '/'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND = 'django_mail_admin.backends.CustomEmailBackend.EmailBackend'
+
+#=========================================================================
+# email-backend // se realizo prueba para notificacion de correo// hacer seguimiento para mayor seguridad
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'correoconfival@prueba'
+EMAIL_HOST_PASSWORD = 'contraseña'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

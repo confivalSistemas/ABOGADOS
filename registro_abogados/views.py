@@ -4,13 +4,14 @@ from django.urls import reverse
 from django.views import generic
 from django.template import loader
 from django import forms
+from django.core.mail import EmailMessage
 from django.contrib.auth.mixins import LoginRequiredMixin # para que el usuario inicie sesion antes de ver el contenido
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 
-from .forms import FormularioAbogados, MunicipioForm, RegisterForm
+from .forms import FormularioAbogados, MunicipioForm, RegisterForm, ContactoForm
 import datetime
 
 #========================================================================================================================================
@@ -157,6 +158,45 @@ class AbogadoDelete(LoginRequiredMixin, DeleteView):
     #success_url = reverse_lazy('authors')
     template_name = 'registro_abogados/abogado_confirm_delete.html'
     context_object_name = 'abogado'
+
+
+#=========================================================================================
+#VISTA CONTACTO
+#=========================================================================================
+def Contact(request):
+    Contact_Form = ContactoForm
+    if request.method == 'POST':
+        form = Contact_Form(data=request.POST)
+
+        if form.is_valid():
+
+            contact_name = request.POST.get('contact_name'),
+            contact_email = request.POST.get('contact_email'),
+            contact_content = request.POST.get('content'),
+       
+            template = loader.get_template('registro_abogados/contact_form.txt')
+
+            content = {
+                'contact_name' : contact_name,
+                'contact_email' : contact_email,
+                'contact_content' : contact_content,
+            }
+            
+            content = template.render(content)
+
+            email = EmailMessage(
+                'New contact form email',
+                content,
+                'Creative web' + '',
+                ['jamuq2010@gmail.com'],                
+                headers={'Reply To': contact_email},
+            )
+        
+
+        email.send()    
+        return redirect('registro_abogados:success')
+    return render(request, 'registro_abogados/contact.html', {'form':Contact_Form})
+
 
 
    

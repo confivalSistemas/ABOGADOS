@@ -21,4 +21,7 @@ urlpatterns = [
     path('createAbogado', views.regAbogado),
     path('createMunicipio', views.municipioDetail),
     path('registroUser', views.registroUsuario), # por el momento para prueba de registro aun no es generica para el proyecto
+
+    # ruta Contacto Email
+    path('contact/', views.Contact, name='contact'),
 ]
