@@ -6,11 +6,14 @@ from django.template import loader
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin # para que el usuario inicie sesion antes de ver el contenido
 
+# funcion imaginaria para manejar subida de archivos
+from somewhere import handle_uploaded_file
+
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 
-from .forms import FormularioAbogados, MunicipioForm, RegisterForm
+from .forms import FormularioAbogados, MunicipioForm, RegisterForm, UploadFileForm 
 import datetime
 
 #========================================================================================================================================
@@ -158,8 +161,16 @@ class AbogadoDelete(LoginRequiredMixin, DeleteView):
     template_name = 'registro_abogados/abogado_confirm_delete.html'
     context_object_name = 'abogado'
 
+#====================================================================
+#==> Vista para caragar archivos 
+#====================================================================
 
-   
+def upload_file():
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            
+
 
 
 

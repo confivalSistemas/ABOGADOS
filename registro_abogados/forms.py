@@ -100,3 +100,12 @@ class RegisterForm(forms.Form):
     state = forms.ChoiceField(choices=STATES)
     zip_code = forms.CharField(label='Zip')
     check_me_out = forms.BooleanField(required=False)
+
+#=================================================================================
+#==> forma para carga de archivos
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()
+
+
+
