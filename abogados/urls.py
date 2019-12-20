@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# para carga de archivos
+from django.conf import settings
+from django.conf.urls.static import static
+
 # para tomar URL relativas a ridereccionar
 from django.views.generic import RedirectView
 from django.conf import settings
@@ -34,4 +38,7 @@ urlpatterns = [
     # Add Django site authentication urls (for login, logout, password management )
     path('accounts/', include('django.contrib.auth.urls')),   
 ] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

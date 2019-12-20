@@ -1,0 +1,14 @@
+{% extends "registro_abogados/base_generic.html" %}
+
+{% block content %}
+    <h2>Cargar documentos de abogado</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br>
+        <h3>cedula</h3>
+        <input type="file" name="document" >
+        <button type="submit">Upload file</button>
+        <br>
+    
+    </form>
+{% endblock %}

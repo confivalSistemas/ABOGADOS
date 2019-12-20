@@ -138,6 +138,13 @@ STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+#==================================================================================
+# => configuracion para carga archivos
+#==================================================================================
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
 # Para cambiar el comportamiento donde el sitio actualice la base de datos y envie la cookie en cada solicitud
 SESSION_SAVE_EVERY_REQUEST = True
 
