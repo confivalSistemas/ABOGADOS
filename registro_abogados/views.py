@@ -167,14 +167,16 @@ class AbogadoDelete(LoginRequiredMixin, DeleteView):
 #====================================================================
 
 def upload(request):
+    context = {}
     if request.method == 'POST':
         uploaded_file = request.FILES['document']
         fs = FileSystemStorage()
-        fs.save(uploaded_file.name, uploaded_file)
+        name = fs.save(uploaded_file.name, uploaded_file)
+        context['url'] = fs.url(name)     
         print(uploaded_file.name)
         print(uploaded_file.size)
 
-    return render(request, 'registro_abogados/upload.html')
+    return render(request, 'registro_abogados/upload.html', context)
 
 
 
