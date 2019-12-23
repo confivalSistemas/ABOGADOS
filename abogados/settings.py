@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'registro_abogados.apps.RegistroAbogadosConfig',
     'registro_asesores.apps.RegistroAsesoresConfig',
     'seguimiento.apps.SeguimientoConfig',
+    'archivo',
 
     # apps de django
     'django.contrib.admin',

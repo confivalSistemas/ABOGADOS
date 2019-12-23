@@ -216,3 +216,10 @@ luego en settings. py agregar en lista de aplicaciones
 configurar variable 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 ```
+25. app archivo
+
+```bash
+python manage.py inspectdb municipio db_abogados perfil genero asesores_db comisiones perfilasesor pagador sentencia_conciliacion reg_sentencia perfil_abogadosentencia abogadosentencia antecedentesabd juzgados_tribunales tipo_documento clase_docuemento > archivo/models.py
+
+```
+
