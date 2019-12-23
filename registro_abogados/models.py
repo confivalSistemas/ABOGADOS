@@ -17,9 +17,10 @@ class Municipio(models.Model):
     class Meta:
         managed = False
         db_table = 'municipio'
-    
+
     def __str__(self):
         return self.municipio
+
 
 class DbAbogados(models.Model):
     codigo = models.AutoField(primary_key=True)
@@ -45,12 +46,10 @@ class DbAbogados(models.Model):
     fax = models.CharField(max_length=15, blank=True, null=True)
     e_mail1 = models.CharField(max_length=67, blank=True, null=True)
     e_mail2 = models.CharField(max_length=67, blank=True, null=True)
-    contacto = models.IntegerField(blank=True, null=True)
+    contacto = models.ForeignKey('OrigenContacto', models.DO_NOTHING, db_column='contacto', blank=True, null=True)
     fecha_actualizacion = models.DateField(blank=True, null=True)
     actualizacion = models.ForeignKey('AsesoresDb', models.DO_NOTHING, db_column='actualizacion', blank=True, null=True)
     observaciones = models.CharField(max_length=150, blank=True, null=True)
-    copiacc = models.CharField(db_column='copiaCc', max_length=150, blank=True, null=True)  # Field name made lowercase.
-    copiatp = models.CharField(db_column='copiaTp', max_length=150, blank=True, null=True)  # Field name made lowercase.
     fechaexpedicion = models.DateField(db_column='fechaExpedicion', blank=True, null=True)  # Field name made lowercase.
     ciudadexpedicion = models.ForeignKey(Municipio, models.DO_NOTHING, db_column='ciudadExpedicion', blank=True, null=True, related_name='DbAbogados.ciudadexpedicion+')  # Field name made lowercase.
     genero = models.ForeignKey('Genero', models.DO_NOTHING, db_column='genero')
@@ -77,8 +76,6 @@ class Perfil(models.Model):
 
     def __str__(self):
         return self.perfil
-
-
 
 class Genero(models.Model):
     codigo = models.AutoField(primary_key=True)
@@ -109,7 +106,7 @@ class AsesoresDb(models.Model):
     c_cedula = models.CharField(max_length=150, blank=True, null=True)
     fecha = models.DateField(blank=True, null=True)
     fecha_s = models.DateField(blank=True, null=True)
-    perfil = models.IntegerField(blank=True, null=True)
+    perfil = models.ForeignKey('Perfilasesor', models.DO_NOTHING, db_column='perfil', blank=True, null=True)
     fechanacimiento = models.DateField(db_column='fechaNacimiento', blank=True, null=True)  # Field name made lowercase.
     fechaexpedicion = models.DateField(db_column='fechaExpedicion', blank=True, null=True)  # Field name made lowercase.
     ciudadexpedicion = models.ForeignKey(Municipio, models.DO_NOTHING, db_column='ciudadExpedicion', blank=True, null=True, related_name='AsesoresDb.ciudadexpedicion+')  # Field name made lowercase.
@@ -134,4 +131,21 @@ class Comisiones(models.Model):
 
     def __str__(self):
         return self.tipo
-    
+
+
+class OrigenContacto(models.Model):
+    codigo = models.AutoField(primary_key=True)
+    contacto = models.CharField(max_length=30)
+
+    class Meta:
+        managed = False
+        db_table = 'origen_contacto'
+
+
+class Perfilasesor(models.Model):
+    codigo = models.AutoField(primary_key=True)
+    perfil = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'perfilasesor'

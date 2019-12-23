@@ -9,8 +9,6 @@ from .models import DbAbogados, Genero, Municipio, Perfil
 def correo(modeladmin, request, queryset):
     print("esto es una prueba de correo")
 
-
-
 class DbAbogadosAdmin(admin.ModelAdmin):
     list_display = ('codigo', 'nombres', 'apellidos', 'cedula', 'tarjeta_p', 'actualizacion', 'ciudad', 'genero', 'perfil', 'celular', 'e_mail1')
     #list_filter = ('nombres', 'cedula')
@@ -42,8 +40,6 @@ class DbAbogadosAdmin(admin.ModelAdmin):
         'fecha_actualizacion',
         'actualizacion__nombre',
         'observaciones',
-        'copiacc',
-        'copiatp',
         'fechaexpedicion',
         'ciudadexpedicion__codigo',
         'genero__genero',     

@@ -170,7 +170,7 @@ admin.site.register(DbAbogados)
 22. Configurar archivo models.py de app registro_abogados registro_asesores seguimiento en inspectdb con las tablas necesarias
 
 ```python
-python manage.py inspectdb municipio db_abogados perfil genero asesores_db comisiones > registro_abogados/models.py
+python manage.py inspectdb municipio db_abogados perfil genero asesores_db comisiones origen_contacto perfilasesor > registro_abogados/models.py
 python manage.py inspectdb asesores_db municipio perfilasesor genero comisiones > registro_asesores/models.py
 python manage.py inspectdb db_abogados perfil seguimiento tipo_seguimiento subitemseguimiento asesores_db municipio comisiones genero > seguimiento/models.py
 
