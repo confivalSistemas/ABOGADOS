@@ -235,3 +235,12 @@ class ClaseDocumento(models.Model):
     class Meta:
         managed = False
         db_table = 'clase_documento'
+
+
+class OrigenContacto(models.Model):
+    codigo = models.AutoField(primary_key=True)
+    contacto = models.CharField(max_length=30)
+
+    class Meta:
+        managed = False
+        db_table = 'origen_contacto'
