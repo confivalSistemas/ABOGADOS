@@ -4,6 +4,25 @@ Es un aplicativo en desarrollo para migración de aplicativos de areas comercial
 implementadas en la actualidad en php y bases de datos Mysql. El objetivo es cambiar lenguaje de programación a Python 
 para mayor escalabilidad y analisis de datos con los procesos de la empresa. 
 
+## BASE DE DATOS MYSQL
+
+create database clientes;
+show databases;
+use 'name_database'; 
+show tables;
+mysql> create table client(
+    -> id INT(11) NOT NULL AUTO_INCREMENT,
+    -> nombre VARCHAR(60) NOT NULL,
+    -> apellido VARCHAR(60) NOT NULL,
+    -> direccion VARCHAR(60),
+    -> PRIMARY KEY (id)
+    -> );
+show tables;
+DESCRIBE client;
+
+mysql> INSERT INTO client (nombre, apellido, direccion)
+    -> VALUES ('Jhon Jairo', 'Mueses Quitiaquez', 'carrera 33 # 23-51');
+
 ## Instalación
 A continuacion se presentan los requerimientos para configuracion de ambiente de trabajo 
 
