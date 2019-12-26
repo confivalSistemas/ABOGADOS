@@ -23,6 +23,16 @@ DESCRIBE client;
 mysql> INSERT INTO client (nombre, apellido, direccion)
     -> VALUES ('Jhon Jairo', 'Mueses Quitiaquez', 'carrera 33 # 23-51');
 
+## VIRTUALIZACION EN ANACONDA
+instalar anaconda descaragar desde https://www.anaconda.com/
+
+crear ambiente virtual y activacion
+
+conda create -n confival python=3.7.4
+activate confival
+deactivate
+
+dentro del ambiente virtual instalar los paquetes requeridos para proyecto en Django
 ## Instalación
 A continuacion se presentan los requerimientos para configuracion de ambiente de trabajo 
 
