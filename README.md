@@ -4,6 +4,14 @@ Es un aplicativo en desarrollo para migración de aplicativos de areas comercial
 implementadas en la actualidad en php y bases de datos Mysql. El objetivo es cambiar lenguaje de programación a Python 
 para mayor escalabilidad y analisis de datos con los procesos de la empresa. 
 
+## Dependencias en ambiente virtual para clonar proyecto
+pip install Django==2.2.6
+pip install django-crispy-forms
+pip install django_mail_admin
+pip install mysqlclient
+pip install jsonfield
+
+
 ## Instalación
 A continuacion se presentan los requerimientos para configuracion de ambiente de trabajo 
 
